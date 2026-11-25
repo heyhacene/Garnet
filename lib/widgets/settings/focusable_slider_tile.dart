@@ -79,7 +79,7 @@ class _FocusableSliderTileState extends State<FocusableSliderTile> {
         onKeyEvent: _handleKey,
         onFocusChange: (hasFocus) {
           setState(() => _focused = hasFocus);
-          if (hasFocus) {
+          if (hasFocus && Scrollable.maybeOf(context) != null) {
             Scrollable.ensureVisible(
               context,
               alignment: 0.5,

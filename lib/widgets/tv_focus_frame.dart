@@ -48,7 +48,7 @@ class TvFocusOverlay extends StatelessWidget {
             curve: Curves.easeOutCubic,
             decoration: BoxDecoration(
               borderRadius: appearance.borderRadius,
-              color: Colors.black.withOpacity(isHighlighted ? 0.0 : 0.14),
+              color: Colors.black.withOpacity(isHighlighted ? 0.0 : 0.10),
             ),
           ),
         ),

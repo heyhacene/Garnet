@@ -68,7 +68,7 @@ jobs:
         run: |
           flutter test --reporter expanded > test.log 2>&1 || TEST_RC=$?
           cat test.log
-          grep -E "\[E\]" test.log | head -n 15 | while IFS= read -r line; do echo "::error::TEST: $line"; done || true
+          grep -A 5 -E "\[E\]" test.log | head -n 30 | while IFS= read -r line; do echo "::error::TEST: $line"; done || true
           if [ "${TEST_RC:-0}" -ne 0 ]; then exit "$TEST_RC"; fi
 
       - name: Build Debug APK (ready to sideload on TV)
