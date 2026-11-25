@@ -39,7 +39,6 @@ import 'package:flauncher/models/category.dart';
   FLauncherChannel,
   WallpaperService,
   AppsService,
-  SettingsService,
   NetworkService,
   ImagePicker,
   NotificationsService,
@@ -47,6 +46,7 @@ import 'package:flauncher/models/category.dart';
   WatchNextService,
   WeatherService,
 ], customMocks: [
+  MockSpec<SettingsService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<FLauncherDatabase>(unsupportedMembers: {#alias}),
   MockSpec<ImageProvider>(unsupportedMembers: {#alias, #resolve, #createStream, #loadBuffer, #loadImage}),
 ])
