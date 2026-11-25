@@ -35,6 +35,7 @@ void main() {
     expect(find.text('14 dp'), findsOneWidget);
 
     await tester.sendKeyEvent(LogicalKeyboardKey.arrowLeft);
+    await tester.pump();
     await tester.sendKeyEvent(LogicalKeyboardKey.arrowLeft);
     await tester.pumpAndSettle();
     expect(find.text('10 dp'), findsOneWidget);

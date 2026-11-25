@@ -100,6 +100,7 @@ class _FocusableSliderTileState extends State<FocusableSliderTile> {
             ),
           ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(

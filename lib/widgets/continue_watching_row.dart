@@ -403,7 +403,7 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
                   duration: appearance.transitionAnimationEnabled
                       ? const Duration(milliseconds: 200)
                       : Duration.zero,
-                  curve: Curves.easeOutBack,
+                  curve: Curves.easeOutCubic,
                   width: cardWidth,
                   height: cardHeight,
                   transform: Matrix4.diagonal3Values(scale, scale, 1.0),

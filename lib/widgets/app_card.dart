@@ -216,7 +216,7 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                             duration: appearance.transitionAnimationEnabled
                                 ? const Duration(milliseconds: 200)
                                 : Duration.zero,
-                            curve: Curves.easeOutBack,
+                            curve: Curves.easeOutCubic,
                             transformAlignment: Alignment.center,
                             transform: Matrix4.diagonal3Values(scale, scale, 1.0),
                             decoration: BoxDecoration(
