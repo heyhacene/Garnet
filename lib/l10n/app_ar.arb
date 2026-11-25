@@ -190,5 +190,19 @@
     "autoAddNewApps": "إضافة التطبيقات المثبتة حديثاً إلى المشغل",
     "whatsNew": "ما الجديد",
     "supportUs": "ادعمنا",
-    "gotIt": "حسنًا"
+    "gotIt": "حسنًا",
+    "cardsAndFocus": "البطاقات والتركيز",
+    "dpadAdjustHint": "يسار / يمين: ضبط مباشر • رجوع: إغلاق",
+    "focusScale": "تكبير عند التركيز",
+    "cardCornerRadius": "استدارة الزوايا",
+    "focusBorderWidth": "سُمك إطار التركيز",
+    "focusGlowIntensity": "شدة توهج التركيز",
+    "rowVerticalSpacing": "تباعد الصفوف",
+    "cardHorizontalSpacing": "تباعد البطاقات",
+    "homeTopSpacing": "المساحة العلوية للخلفية",
+    "wallpaperDimming": "تعتيم الخلفية",
+    "wallpaperBlur": "ضبابية الخلفية",
+    "resetAppearanceDefaults": "استعادة إعدادات السينما",
+    "batteryIcon": "أيقونة البطارية",
+    "batteryPercentage": "نسبة البطارية"
 }

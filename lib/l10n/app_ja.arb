@@ -190,5 +190,19 @@
     "autoAddNewApps": "新しくインストールしたアプリをランチャーに追加",
     "whatsNew": "新機能",
     "supportUs": "サポートする",
-    "gotIt": "OK"
+    "gotIt": "OK",
+    "cardsAndFocus": "カードとフォーカス",
+    "dpadAdjustHint": "左 / 右：リアルタイム調整 • 戻る：閉じる",
+    "focusScale": "フォーカス拡大率",
+    "cardCornerRadius": "角丸の半径",
+    "focusBorderWidth": "フォーカス枠の太さ",
+    "focusGlowIntensity": "フォーカス発光の強さ",
+    "rowVerticalSpacing": "行の間隔",
+    "cardHorizontalSpacing": "カードの間隔",
+    "homeTopSpacing": "壁紙の上部余白",
+    "wallpaperDimming": "壁紙の暗さ",
+    "wallpaperBlur": "壁紙のぼかし",
+    "resetAppearanceDefaults": "シネマ設定をリセット",
+    "batteryIcon": "バッテリーアイコン",
+    "batteryPercentage": "バッテリー残量 (%)"
 }

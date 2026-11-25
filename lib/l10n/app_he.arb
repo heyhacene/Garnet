@@ -190,5 +190,19 @@
     "autoAddNewApps": "הוספת אפליקציות חדשות שהותקנו למסך הבית",
     "whatsNew": "מה חדש",
     "supportUs": "תמכו בנו",
-    "gotIt": "הבנתי"
+    "gotIt": "הבנתי",
+    "cardsAndFocus": "כרטיסים ומיקוד",
+    "dpadAdjustHint": "שמאל / ימין: התאמה בזמן אמת • חזרה: סגירה",
+    "focusScale": "הגדלה במיקוד",
+    "cardCornerRadius": "רדיוס פינות",
+    "focusBorderWidth": "עובי מסגרת מיקוד",
+    "focusGlowIntensity": "עוצמת זוהר מיקוד",
+    "rowVerticalSpacing": "מרווח בין שורות",
+    "cardHorizontalSpacing": "מרווח בין כרטיסים",
+    "homeTopSpacing": "מרווח עליון לרקע",
+    "wallpaperDimming": "הכהיית רקע",
+    "wallpaperBlur": "טשטוש רקע",
+    "resetAppearanceDefaults": "איפוס לסגנון קולנוע",
+    "batteryIcon": "סמל סוללה",
+    "batteryPercentage": "אחוזי סוללה"
 }

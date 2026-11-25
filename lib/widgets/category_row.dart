@@ -47,6 +47,11 @@ class CategoryRow extends StatelessWidget
       categoryContent = categoryContainerEmptyState(context);
     }
     else {
+      final double cardGap = context.select<SettingsService, double>(
+        (s) => s.cardHorizontalSpacing > 0 ? s.cardHorizontalSpacing.clamp(8.0, 32.0) : 16.0,
+      );
+      final double halfGap = cardGap / 2.0;
+
       categoryContent = SizedBox(
         height: category.rowHeight.toDouble(),
         child: ListView.custom(
@@ -60,7 +65,7 @@ class CategoryRow extends StatelessWidget
             findChildIndexCallback: _findChildIndex,
             (context, index) => Padding(
                 key: ValueKey<String>(applications[index].packageName),
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: EdgeInsets.symmetric(horizontal: halfGap),
                 child: AppCard(
                   index: index,
                   category: category,

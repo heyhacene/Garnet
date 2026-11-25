@@ -1,3 +1,4 @@
+import 'package:flauncher/models/tv_appearance_config.dart';
 import 'package:flauncher/models/watch_next_program.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/settings_service.dart';
@@ -5,6 +6,7 @@ import 'package:flauncher/providers/watch_next_service.dart';
 import 'package:flauncher/actions.dart';
 import 'package:flauncher/widgets/app_card_keys.dart';
 import 'package:flauncher/widgets/focus_keyboard_listener.dart';
+import 'package:flauncher/widgets/tv_focus_frame.dart';
 import 'package:flauncher/widgets/watch_next_info_panel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -76,9 +78,17 @@ class ContinueWatchingRow extends StatelessWidget {
           }
         }
         final double rowHeight = cardHeight + 36.0;
+        final double rowVerticalPadding = (settingsService.rowVerticalSpacing > 0
+                ? settingsService.rowVerticalSpacing.clamp(8.0, 40.0)
+                : 16.0) /
+            2.0;
+        final double cardHalfGap = (settingsService.cardHorizontalSpacing > 0
+                ? settingsService.cardHorizontalSpacing.clamp(8.0, 32.0)
+                : 16.0) /
+            2.0;
 
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: EdgeInsets.symmetric(vertical: rowVerticalPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -134,7 +144,7 @@ class ContinueWatchingRow extends StatelessWidget {
                     final program = programs[index];
                     return Padding(
                       key: ValueKey(program.id),
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      padding: EdgeInsets.symmetric(horizontal: cardHalfGap),
                       child: RepaintBoundary(
                         child: WatchNextCard(
                           program: program,
@@ -287,17 +297,15 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final String themes = context.select<SettingsService, String>((s) => s.themes);
-    final String accentColorHex = context.select<SettingsService, String>((s) => s.accentColorHex);
-    final bool appHighlightAnimationEnabled = context.select<SettingsService, bool>((s) => s.appHighlightAnimationEnabled);
-    final bool hideHighlightOutlineOnHomescreen = context.select<SettingsService, bool>((s) => s.hideHighlightOutlineOnHomescreen);
-    final bool appSelectorTransitionAnimationEnabled = context.select<SettingsService, bool>((s) => s.appSelectorTransitionAnimationEnabled);
+    final TvAppearanceConfig appearance = context.select<SettingsService, TvAppearanceConfig>(
+      TvAppearanceConfig.fromSettings,
+    );
     final String cardSize = context.select<SettingsService, String>((s) => s.continueWatchingCardSize);
     final bool showProgress = context.select<SettingsService, bool>((s) => s.continueWatchingShowProgress);
     final bool showPercentage = context.select<SettingsService, bool>((s) => s.continueWatchingShowPercentage);
     final bool showDescription = context.select<SettingsService, bool>((s) => s.continueWatchingShowDescription);
 
-    final Color accentColor = Color(int.tryParse('0xFF$accentColorHex') ?? 0xFF7C4DFF);
+    final Color accentColor = appearance.accentColor;
     double cardWidth;
     double cardHeight;
     final int? customHeight = int.tryParse(cardSize);
@@ -322,174 +330,16 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
       }
     }
 
-    BorderRadius borderRadius;
-    BorderRadius innerBorderRadius;
-
-    switch (themes) {
-      case 'premium':
-        borderRadius = BorderRadius.circular(16);
-        innerBorderRadius = BorderRadius.circular(14);
-        break;
-      case 'glow':
-        borderRadius = BorderRadius.circular(12);
-        innerBorderRadius = BorderRadius.circular(10);
-        break;
-      case 'squircle':
-        borderRadius = BorderRadius.circular(24);
-        innerBorderRadius = BorderRadius.circular(22);
-        break;
-      case 'classic':
-        borderRadius = BorderRadius.zero;
-        innerBorderRadius = BorderRadius.zero;
-        break;
-      case 'minimal':
-        borderRadius = BorderRadius.circular(4);
-        innerBorderRadius = BorderRadius.circular(2);
-        break;
-      case 'capsule':
-        borderRadius = BorderRadius.circular(100);
-        innerBorderRadius = BorderRadius.circular(98);
-        break;
-      case 'modern':
-      default:
-        borderRadius = BorderRadius.circular(8);
-        innerBorderRadius = BorderRadius.circular(6);
-        break;
-    }
-
+    final BorderRadius borderRadius = appearance.borderRadius;
     final bool shouldHighlight = _shouldHighlight(context);
-
-    double scale = 1.0;
-    if (shouldHighlight) {
-      if (themes == 'premium') {
-        scale = 1.15;
-      } else if (themes == 'classic') {
-        scale = 1.0;
-      } else if (themes == 'minimal') {
-        scale = 1.05;
-      } else if (themes == 'glow' || themes == 'squircle') {
-        scale = 1.12;
-      } else {
-        scale = 1.1;
-      }
-
-      if (cardWidth > 0) {
-        // Gap between cards is at least 16px.
-        // Limit horizontal expansion to 14px per side to prevent cropping with the next card.
-        double maxScale = 1.0 + (28.0 / cardWidth);
-        if (scale > maxScale) {
-          scale = maxScale;
-        }
-      }
-    }
-
-    final double elevation = shouldHighlight
-        ? (themes == 'minimal' ? 6 : (themes == 'classic' ? 8 : 16))
-        : 0;
-    final Color shadowColor = (shouldHighlight && themes == 'glow')
+    final double scale = appearance.effectiveScaleForWidth(
+      cardWidth,
+      isHighlighted: shouldHighlight,
+    );
+    final double elevation = appearance.elevationForFocus(shouldHighlight);
+    final Color shadowColor = (shouldHighlight && appearance.theme == 'glow')
         ? accentColor.withOpacity(0.85)
         : Colors.black;
-
-    Widget? highlightWidget;
-    if (shouldHighlight && !hideHighlightOutlineOnHomescreen) {
-      if (themes == 'premium') {
-        _animation.stop();
-      } else if (themes == 'classic') {
-        _animation.stop();
-        highlightWidget = IgnorePointer(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: borderRadius,
-              border: Border.all(color: accentColor, width: 4),
-            ),
-          ),
-        );
-      } else if (themes == 'minimal') {
-        _animation.stop();
-        highlightWidget = IgnorePointer(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: borderRadius,
-              border: Border.all(color: accentColor, width: 2),
-            ),
-          ),
-        );
-      } else if (themes == 'glow') {
-        _animation.stop();
-        highlightWidget = IgnorePointer(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: borderRadius,
-              border: Border.all(color: accentColor, width: 3),
-            ),
-          ),
-        );
-      } else if (appHighlightAnimationEnabled) {
-        if (!_animation.isAnimating) {
-          _animation.repeat(reverse: true);
-        }
-        highlightWidget = AnimatedBuilder(
-          animation: CurvedAnimation(parent: _animation, curve: Curves.easeInOut),
-          builder: (context, child) {
-            final opacity = 0.4 + (_animation.value * 0.6);
-            return IgnorePointer(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: borderRadius,
-                      border: Border.all(
-                        color: accentColor.withOpacity(opacity),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(2),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: innerBorderRadius,
-                        border: Border.all(
-                          color: Colors.black.withOpacity(opacity),
-                          width: 2,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-      } else {
-        _animation.stop();
-        highlightWidget = IgnorePointer(
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: borderRadius,
-                  border: Border.all(color: accentColor, width: 2),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(2),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: innerBorderRadius,
-                    border: Border.all(color: Colors.black, width: 2),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      }
-    } else {
-      _animation.stop();
-    }
 
     // Progress percentage
     final double progress = widget.program.safeProgress;
@@ -550,7 +400,7 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
                 opacity: _clicked ? 0.5 : 1.0,
                 duration: const Duration(milliseconds: 150),
                 child: AnimatedContainer(
-                  duration: appSelectorTransitionAnimationEnabled
+                  duration: appearance.transitionAnimationEnabled
                       ? const Duration(milliseconds: 200)
                       : Duration.zero,
                   curve: Curves.easeOutBack,
@@ -558,6 +408,10 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
                   height: cardHeight,
                   transform: Matrix4.diagonal3Values(scale, scale, 1.0),
                   transformAlignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: borderRadius,
+                    boxShadow: appearance.focusShadows(shouldHighlight),
+                  ),
                   child: Material(
                     borderRadius: borderRadius,
                     clipBehavior: Clip.antiAlias,
@@ -668,21 +522,11 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
                             ],
                           ),
                         ),
-                        // Unfocused dimming overlay
-                        IgnorePointer(
-                          // A color, not an Opacity layer: much cheaper to raster with Skia (as in AppCard).
-                          child: AnimatedContainer(
-                            duration: appSelectorTransitionAnimationEnabled
-                                ? const Duration(milliseconds: 200)
-                                : Duration.zero,
-                            curve: Curves.easeInOut,
-                            decoration: BoxDecoration(
-                              borderRadius: borderRadius,
-                              color: Colors.black.withOpacity(shouldHighlight ? 0 : 0.10),
-                            ),
-                          ),
+                        TvFocusOverlay(
+                          appearance: appearance,
+                          isHighlighted: shouldHighlight,
+                          pulseController: _animation,
                         ),
-                        if (highlightWidget != null) highlightWidget,
                       ],
                     ),
                   ),

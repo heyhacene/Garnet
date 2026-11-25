@@ -486,4 +486,46 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get gotIt => 'Anladım';
+
+  @override
+  String get cardsAndFocus => 'Kartlar ve Odak';
+
+  @override
+  String get dpadAdjustHint => 'Sol / Sağ: Canlı ayarla • Geri: Kapat';
+
+  @override
+  String get focusScale => 'Odak ölçeği';
+
+  @override
+  String get cardCornerRadius => 'Köşe yarıçapı';
+
+  @override
+  String get focusBorderWidth => 'Odak kenarlık kalınlığı';
+
+  @override
+  String get focusGlowIntensity => 'Odak parıltı yoğunluğu';
+
+  @override
+  String get rowVerticalSpacing => 'Satır aralığı';
+
+  @override
+  String get cardHorizontalSpacing => 'Kart aralığı';
+
+  @override
+  String get homeTopSpacing => 'Üst duvar kağıdı boşluğu';
+
+  @override
+  String get wallpaperDimming => 'Duvar kağıdı karartma';
+
+  @override
+  String get wallpaperBlur => 'Duvar kağıdı bulanıklığı';
+
+  @override
+  String get resetAppearanceDefaults => 'Sinema varsayılanlarını sıfırla';
+
+  @override
+  String get batteryIcon => 'Pil simgesi';
+
+  @override
+  String get batteryPercentage => 'Pil yüzdesi';
 }

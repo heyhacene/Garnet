@@ -190,5 +190,19 @@
     "autoAddNewApps": "Додавати щойно встановлені додатки до лаунчера",
     "whatsNew": "Що нового",
     "supportUs": "Підтримати нас",
-    "gotIt": "Зрозуміло"
+    "gotIt": "Зрозуміло",
+    "cardsAndFocus": "Картки та фокус",
+    "dpadAdjustHint": "Вліво / Вправо: Налаштування • Назад: Закрити",
+    "focusScale": "Масштаб при фокусі",
+    "cardCornerRadius": "Заокруглення кутів",
+    "focusBorderWidth": "Товщина рамки фокуса",
+    "focusGlowIntensity": "Яскравість світіння",
+    "rowVerticalSpacing": "Відступ між рядками",
+    "cardHorizontalSpacing": "Відступ між картками",
+    "homeTopSpacing": "Верхній відступ фону",
+    "wallpaperDimming": "Затемнення фону",
+    "wallpaperBlur": "Розмиття фону",
+    "resetAppearanceDefaults": "Скинути стиль Кіно",
+    "batteryIcon": "Значок батареї",
+    "batteryPercentage": "Відсоток батареї"
 }

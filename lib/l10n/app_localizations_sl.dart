@@ -486,4 +486,46 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get gotIt => 'Razumem';
+
+  @override
+  String get cardsAndFocus => 'Kartice in fokus';
+
+  @override
+  String get dpadAdjustHint => 'Levo / Desno: Prilagodi v živo • Nazaj: Zapri';
+
+  @override
+  String get focusScale => 'Povečava ob fokusu';
+
+  @override
+  String get cardCornerRadius => 'Zaobljenost robov';
+
+  @override
+  String get focusBorderWidth => 'Debelina obrobe fokusa';
+
+  @override
+  String get focusGlowIntensity => 'Moč sijaja fokusa';
+
+  @override
+  String get rowVerticalSpacing => 'Razmik med vrsticami';
+
+  @override
+  String get cardHorizontalSpacing => 'Razmik med karticami';
+
+  @override
+  String get homeTopSpacing => 'Zgornji prostor ozadja';
+
+  @override
+  String get wallpaperDimming => 'Zatemnitev ozadja';
+
+  @override
+  String get wallpaperBlur => 'Zameglitev ozadja';
+
+  @override
+  String get resetAppearanceDefaults => 'Ponastavi na privzeti kino';
+
+  @override
+  String get batteryIcon => 'Ikona baterije';
+
+  @override
+  String get batteryPercentage => 'Odstotek baterije';
 }

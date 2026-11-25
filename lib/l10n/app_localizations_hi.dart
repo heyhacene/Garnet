@@ -486,4 +486,46 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get gotIt => 'समझ गया';
+
+  @override
+  String get cardsAndFocus => 'कार्ड और फ़ोकस';
+
+  @override
+  String get dpadAdjustHint => 'बाएँ / दाएँ: लाइव बदलें • वापस: बंद करें';
+
+  @override
+  String get focusScale => 'फ़ोकस स्केल';
+
+  @override
+  String get cardCornerRadius => 'कोने की गोलाई';
+
+  @override
+  String get focusBorderWidth => 'फ़ोकस बॉर्डर चौड़ाई';
+
+  @override
+  String get focusGlowIntensity => 'फ़ोकस चमक तीव्रता';
+
+  @override
+  String get rowVerticalSpacing => 'पंक्ति अंतराल';
+
+  @override
+  String get cardHorizontalSpacing => 'कार्ड अंतराल';
+
+  @override
+  String get homeTopSpacing => 'शीर्ष वॉलपेपर स्थान';
+
+  @override
+  String get wallpaperDimming => 'वॉलपेपर गहरापन';
+
+  @override
+  String get wallpaperBlur => 'वॉलपेपर धुंधलापन';
+
+  @override
+  String get resetAppearanceDefaults => 'सिनेमा डिफ़ॉल्ट रीसेट करें';
+
+  @override
+  String get batteryIcon => 'बैटरी आइकन';
+
+  @override
+  String get batteryPercentage => 'बैटरी प्रतिशत';
 }

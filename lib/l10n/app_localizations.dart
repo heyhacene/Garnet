@@ -1064,6 +1064,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Got it'**
   String get gotIt;
+
+  /// No description provided for @cardsAndFocus.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards & Focus'**
+  String get cardsAndFocus;
+
+  /// No description provided for @dpadAdjustHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Left / Right: Adjust live • Back: Close'**
+  String get dpadAdjustHint;
+
+  /// No description provided for @focusScale.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus scale'**
+  String get focusScale;
+
+  /// No description provided for @cardCornerRadius.
+  ///
+  /// In en, this message translates to:
+  /// **'Corner radius'**
+  String get cardCornerRadius;
+
+  /// No description provided for @focusBorderWidth.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus border width'**
+  String get focusBorderWidth;
+
+  /// No description provided for @focusGlowIntensity.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus glow intensity'**
+  String get focusGlowIntensity;
+
+  /// No description provided for @rowVerticalSpacing.
+  ///
+  /// In en, this message translates to:
+  /// **'Row spacing'**
+  String get rowVerticalSpacing;
+
+  /// No description provided for @cardHorizontalSpacing.
+  ///
+  /// In en, this message translates to:
+  /// **'Card spacing'**
+  String get cardHorizontalSpacing;
+
+  /// No description provided for @homeTopSpacing.
+  ///
+  /// In en, this message translates to:
+  /// **'Top wallpaper space'**
+  String get homeTopSpacing;
+
+  /// No description provided for @wallpaperDimming.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallpaper dimming'**
+  String get wallpaperDimming;
+
+  /// No description provided for @wallpaperBlur.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallpaper blur'**
+  String get wallpaperBlur;
+
+  /// No description provided for @resetAppearanceDefaults.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Cinema defaults'**
+  String get resetAppearanceDefaults;
+
+  /// No description provided for @batteryIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery icon'**
+  String get batteryIcon;
+
+  /// No description provided for @batteryPercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery percentage'**
+  String get batteryPercentage;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

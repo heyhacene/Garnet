@@ -486,4 +486,46 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get gotIt => 'OK';
+
+  @override
+  String get cardsAndFocus => 'カードとフォーカス';
+
+  @override
+  String get dpadAdjustHint => '左 / 右：リアルタイム調整 • 戻る：閉じる';
+
+  @override
+  String get focusScale => 'フォーカス拡大率';
+
+  @override
+  String get cardCornerRadius => '角丸の半径';
+
+  @override
+  String get focusBorderWidth => 'フォーカス枠の太さ';
+
+  @override
+  String get focusGlowIntensity => 'フォーカス発光の強さ';
+
+  @override
+  String get rowVerticalSpacing => '行の間隔';
+
+  @override
+  String get cardHorizontalSpacing => 'カードの間隔';
+
+  @override
+  String get homeTopSpacing => '壁紙の上部余白';
+
+  @override
+  String get wallpaperDimming => '壁紙の暗さ';
+
+  @override
+  String get wallpaperBlur => '壁紙のぼかし';
+
+  @override
+  String get resetAppearanceDefaults => 'シネマ設定をリセット';
+
+  @override
+  String get batteryIcon => 'バッテリーアイコン';
+
+  @override
+  String get batteryPercentage => 'バッテリー残量 (%)';
 }

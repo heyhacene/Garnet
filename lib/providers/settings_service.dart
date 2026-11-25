@@ -64,6 +64,17 @@ const String _showWeatherInStatusBarKey = "show_weather_in_status_bar";
 const String _showWeatherWarningsKey = "show_weather_warnings";
 const String _temperatureUnitKey = "temperature_unit";
 const String _autoAddNewAppsKey = "auto_add_new_apps";
+const String _showBatteryIconInStatusBarKey = "show_battery_icon_in_status_bar";
+const String _showBatteryPercentageInStatusBarKey = "show_battery_percentage_in_status_bar";
+const String _cardFocusScaleKey = "card_focus_scale";
+const String _customCardCornerRadiusKey = "custom_card_corner_radius";
+const String _customFocusBorderWidthKey = "custom_focus_border_width";
+const String _focusGlowIntensityKey = "focus_glow_intensity";
+const String _rowVerticalSpacingKey = "row_vertical_spacing";
+const String _cardHorizontalSpacingKey = "card_horizontal_spacing";
+const String _wallpaperScrimIntensityKey = "wallpaper_scrim_intensity";
+const String _wallpaperBlurSigmaKey = "wallpaper_blur_sigma";
+const String _homeTopSpacingKey = "home_top_spacing";
 
 const String TEMPERATURE_UNIT_CELSIUS = "celsius";
 const String TEMPERATURE_UNIT_FAHRENHEIT = "fahrenheit";
@@ -74,6 +85,7 @@ const String DATA_USAGE_WEEKLY = "weekly";
 const String DATA_USAGE_MONTHLY = "monthly";
 
 // Accent color presets (hex values)
+const String ACCENT_COLOR_GARNET = "E11D48";
 const String ACCENT_COLOR_PURPLE = "7C4DFF";
 const String ACCENT_COLOR_TEAL = "00BFA5";
 const String ACCENT_COLOR_BLUE = "2979FF";
@@ -141,8 +153,30 @@ class SettingsService extends ChangeNotifier {
   late bool _showWeatherWarnings;
   late String _temperatureUnit;
   late bool _autoAddNewApps;
+  late bool _showBatteryIconInStatusBar;
+  late bool _showBatteryPercentageInStatusBar;
+  double? _cardFocusScale;
+  int? _customCardCornerRadius;
+  double? _customFocusBorderWidth;
+  late double _focusGlowIntensity;
+  late double _rowVerticalSpacing;
+  late double _cardHorizontalSpacing;
+  late double _wallpaperScrimIntensity;
+  late double _wallpaperBlurSigma;
+  late double _homeTopSpacing;
 
   bool get autoAddNewApps => _autoAddNewApps;
+  bool get showBatteryIconInStatusBar => _showBatteryIconInStatusBar;
+  bool get showBatteryPercentageInStatusBar => _showBatteryPercentageInStatusBar;
+  double? get cardFocusScale => _cardFocusScale;
+  int? get customCardCornerRadius => _customCardCornerRadius;
+  double? get customFocusBorderWidth => _customFocusBorderWidth;
+  double get focusGlowIntensity => _focusGlowIntensity;
+  double get rowVerticalSpacing => _rowVerticalSpacing;
+  double get cardHorizontalSpacing => _cardHorizontalSpacing;
+  double get wallpaperScrimIntensity => _wallpaperScrimIntensity;
+  double get wallpaperBlurSigma => _wallpaperBlurSigma;
+  double get homeTopSpacing => _homeTopSpacing;
   bool get appHighlightAnimationEnabled => _appHighlightAnimationEnabled;
 
   bool get appKeyClickEnabled => _appKeyClickEnabled;
@@ -265,12 +299,34 @@ class SettingsService extends ChangeNotifier {
     _showWeatherWarnings = _sharedPreferences.getBool(_showWeatherWarningsKey) ?? true;
     _temperatureUnit = _sharedPreferences.getString(_temperatureUnitKey) ?? TEMPERATURE_UNIT_CELSIUS;
     _autoAddNewApps = _sharedPreferences.getBool(_autoAddNewAppsKey) ?? true;
+    _showBatteryIconInStatusBar = _sharedPreferences.getBool(_showBatteryIconInStatusBarKey) ?? false;
+    _showBatteryPercentageInStatusBar = _sharedPreferences.getBool(_showBatteryPercentageInStatusBarKey) ?? false;
+    _cardFocusScale = _sharedPreferences.getDouble(_cardFocusScaleKey);
+    _customCardCornerRadius = _sharedPreferences.getInt(_customCardCornerRadiusKey);
+    _customFocusBorderWidth = _sharedPreferences.getDouble(_customFocusBorderWidthKey);
+    _focusGlowIntensity = _sharedPreferences.getDouble(_focusGlowIntensityKey) ?? 0.60;
+    _rowVerticalSpacing = _sharedPreferences.getDouble(_rowVerticalSpacingKey) ?? 16.0;
+    _cardHorizontalSpacing = _sharedPreferences.getDouble(_cardHorizontalSpacingKey) ?? 16.0;
+    _wallpaperScrimIntensity = _sharedPreferences.getDouble(_wallpaperScrimIntensityKey) ?? 0.68;
+    _wallpaperBlurSigma = _sharedPreferences.getDouble(_wallpaperBlurSigmaKey) ?? 0.0;
+    _homeTopSpacing = _sharedPreferences.getDouble(_homeTopSpacingKey) ?? 40.0;
     notifyListeners();
   }
 
   Map<String, dynamic> exportSettingsMap() {
     return {
       _autoAddNewAppsKey: _autoAddNewApps,
+      _showBatteryIconInStatusBarKey: _showBatteryIconInStatusBar,
+      _showBatteryPercentageInStatusBarKey: _showBatteryPercentageInStatusBar,
+      if (_cardFocusScale != null) _cardFocusScaleKey: _cardFocusScale,
+      if (_customCardCornerRadius != null) _customCardCornerRadiusKey: _customCardCornerRadius,
+      if (_customFocusBorderWidth != null) _customFocusBorderWidthKey: _customFocusBorderWidth,
+      _focusGlowIntensityKey: _focusGlowIntensity,
+      _rowVerticalSpacingKey: _rowVerticalSpacing,
+      _cardHorizontalSpacingKey: _cardHorizontalSpacing,
+      _wallpaperScrimIntensityKey: _wallpaperScrimIntensity,
+      _wallpaperBlurSigmaKey: _wallpaperBlurSigma,
+      _homeTopSpacingKey: _homeTopSpacing,
       _appHighlightAnimationEnabledKey: _appHighlightAnimationEnabled,
       _appKeyClickEnabledKey: _appKeyClickEnabled,
       _autoHideAppBarKey: _autoHideAppBarEnabled,
@@ -618,6 +674,118 @@ class SettingsService extends ChangeNotifier {
   Future<void> setAutoAddNewApps(bool enabled) async {
     await _sharedPreferences.setBool(_autoAddNewAppsKey, enabled);
     _autoAddNewApps = enabled;
+    notifyListeners();
+  }
+
+  Future<void> setShowBatteryIconInStatusBar(bool show) async {
+    await _sharedPreferences.setBool(_showBatteryIconInStatusBarKey, show);
+    _showBatteryIconInStatusBar = show;
+    notifyListeners();
+  }
+
+  Future<void> setShowBatteryPercentageInStatusBar(bool show) async {
+    await _sharedPreferences.setBool(_showBatteryPercentageInStatusBarKey, show);
+    _showBatteryPercentageInStatusBar = show;
+    notifyListeners();
+  }
+
+  Future<void> setCardFocusScale(double? value) async {
+    if (value == null) {
+      await _sharedPreferences.remove(_cardFocusScaleKey);
+      _cardFocusScale = null;
+    } else {
+      final clamped = double.parse(value.clamp(1.0, 1.18).toStringAsFixed(2));
+      await _sharedPreferences.setDouble(_cardFocusScaleKey, clamped);
+      _cardFocusScale = clamped;
+    }
+    notifyListeners();
+  }
+
+  Future<void> setCustomCardCornerRadius(int? value) async {
+    if (value == null) {
+      await _sharedPreferences.remove(_customCardCornerRadiusKey);
+      _customCardCornerRadius = null;
+    } else {
+      final clamped = value.clamp(0, 28);
+      await _sharedPreferences.setInt(_customCardCornerRadiusKey, clamped);
+      _customCardCornerRadius = clamped;
+    }
+    notifyListeners();
+  }
+
+  Future<void> setCustomFocusBorderWidth(double? value) async {
+    if (value == null) {
+      await _sharedPreferences.remove(_customFocusBorderWidthKey);
+      _customFocusBorderWidth = null;
+    } else {
+      final clamped = double.parse(value.clamp(0.0, 5.0).toStringAsFixed(1));
+      await _sharedPreferences.setDouble(_customFocusBorderWidthKey, clamped);
+      _customFocusBorderWidth = clamped;
+    }
+    notifyListeners();
+  }
+
+  Future<void> setFocusGlowIntensity(double value) async {
+    final clamped = double.parse(value.clamp(0.0, 1.0).toStringAsFixed(2));
+    await _sharedPreferences.setDouble(_focusGlowIntensityKey, clamped);
+    _focusGlowIntensity = clamped;
+    notifyListeners();
+  }
+
+  Future<void> setRowVerticalSpacing(double value) async {
+    final clamped = value.clamp(8.0, 40.0).roundToDouble();
+    await _sharedPreferences.setDouble(_rowVerticalSpacingKey, clamped);
+    _rowVerticalSpacing = clamped;
+    notifyListeners();
+  }
+
+  Future<void> setCardHorizontalSpacing(double value) async {
+    final clamped = value.clamp(8.0, 32.0).roundToDouble();
+    await _sharedPreferences.setDouble(_cardHorizontalSpacingKey, clamped);
+    _cardHorizontalSpacing = clamped;
+    notifyListeners();
+  }
+
+  Future<void> setWallpaperScrimIntensity(double value) async {
+    final clamped = double.parse(value.clamp(0.15, 0.90).toStringAsFixed(2));
+    await _sharedPreferences.setDouble(_wallpaperScrimIntensityKey, clamped);
+    _wallpaperScrimIntensity = clamped;
+    notifyListeners();
+  }
+
+  Future<void> setWallpaperBlurSigma(double value) async {
+    final clamped = value.clamp(0.0, 16.0).roundToDouble();
+    await _sharedPreferences.setDouble(_wallpaperBlurSigmaKey, clamped);
+    _wallpaperBlurSigma = clamped;
+    notifyListeners();
+  }
+
+  Future<void> setHomeTopSpacing(double value) async {
+    final clamped = value.clamp(0.0, 200.0).roundToDouble();
+    await _sharedPreferences.setDouble(_homeTopSpacingKey, clamped);
+    _homeTopSpacing = clamped;
+    notifyListeners();
+  }
+
+  Future<void> resetAppearanceDefaults() async {
+    await _sharedPreferences.remove(_cardFocusScaleKey);
+    await _sharedPreferences.remove(_customCardCornerRadiusKey);
+    await _sharedPreferences.remove(_customFocusBorderWidthKey);
+    await _sharedPreferences.setDouble(_focusGlowIntensityKey, 0.60);
+    await _sharedPreferences.setDouble(_rowVerticalSpacingKey, 16.0);
+    await _sharedPreferences.setDouble(_cardHorizontalSpacingKey, 16.0);
+    await _sharedPreferences.setDouble(_wallpaperScrimIntensityKey, 0.68);
+    await _sharedPreferences.setDouble(_wallpaperBlurSigmaKey, 0.0);
+    await _sharedPreferences.setDouble(_homeTopSpacingKey, 40.0);
+    _cardFocusScale = null;
+    _customCardCornerRadius = null;
+    _customFocusBorderWidth = null;
+    _focusGlowIntensity = 0.60;
+    _rowVerticalSpacing = 16.0;
+    _cardHorizontalSpacing = 16.0;
+    _wallpaperScrimIntensity = 0.68;
+    _wallpaperBlurSigma = 0.0;
+    _homeTopSpacing = 40.0;
     notifyListeners();
   }
 }

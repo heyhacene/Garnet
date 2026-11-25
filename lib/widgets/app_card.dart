@@ -20,11 +20,13 @@ import 'dart:async';
 
 import 'package:flauncher/actions.dart';
 import 'package:flauncher/app_image_type.dart';
+import 'package:flauncher/models/tv_appearance_config.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/settings_service.dart';
 import 'package:flauncher/widgets/application_info_panel.dart';
 import 'package:flauncher/widgets/focus_keyboard_listener.dart';
 import 'package:flauncher/widgets/app_card_keys.dart';
+import 'package:flauncher/widgets/tv_focus_frame.dart';
 import 'package:flauncher/providers/launcher_state.dart';
 import 'package:flauncher/providers/notifications_service.dart';
 import 'package:flutter/material.dart';
@@ -169,46 +171,10 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final bool showAppNames = context.select<SettingsService, bool>((s) => s.showAppNamesBelowIcons);
-    final String themes = context.select<SettingsService, String>((s) => s.themes);
-    final String accentColorHex = context.select<SettingsService, String>((s) => s.accentColorHex);
-    final Color accentColor = Color(int.tryParse('0xFF$accentColorHex') ?? 0xFF7C4DFF);
-    final bool hideHighlightOutlineOnHomescreen = context.select<SettingsService, bool>((s) => s.hideHighlightOutlineOnHomescreen);
-    final bool appSelectorTransitionAnimationEnabled = context.select<SettingsService, bool>((s) => s.appSelectorTransitionAnimationEnabled);
-
-    BorderRadius borderRadius;
-    BorderRadius innerBorderRadius;
-
-    switch (themes) {
-      case 'premium':
-        borderRadius = BorderRadius.circular(16);
-        innerBorderRadius = BorderRadius.circular(14);
-        break;
-      case 'glow':
-        borderRadius = BorderRadius.circular(12);
-        innerBorderRadius = BorderRadius.circular(10);
-        break;
-      case 'squircle':
-        borderRadius = BorderRadius.circular(24);
-        innerBorderRadius = BorderRadius.circular(22);
-        break;
-      case 'classic':
-        borderRadius = BorderRadius.zero;
-        innerBorderRadius = BorderRadius.zero;
-        break;
-      case 'minimal':
-        borderRadius = BorderRadius.circular(4);
-        innerBorderRadius = BorderRadius.circular(2);
-        break;
-      case 'capsule':
-        borderRadius = BorderRadius.circular(100);
-        innerBorderRadius = BorderRadius.circular(98);
-        break;
-      case 'modern':
-      default:
-        borderRadius = BorderRadius.circular(8);
-        innerBorderRadius = BorderRadius.circular(6);
-        break;
-    }
+    final TvAppearanceConfig appearance = context.select<SettingsService, TvAppearanceConfig>(
+      TvAppearanceConfig.fromSettings,
+    );
+    final BorderRadius borderRadius = appearance.borderRadius;
 
     return FocusKeyboardListener(
       onPressed: (key) => _onPressed(context, key),
@@ -240,16 +206,30 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                     child: RepaintBoundary(
                       child: LayoutBuilder(
                         builder: (context, constraints) {
+                          final double scale = _moving
+                              ? 1.0
+                              : appearance.effectiveScaleForWidth(
+                                  constraints.maxWidth,
+                                  isHighlighted: shouldHighlight,
+                                );
                           return AnimatedContainer(
-                            duration: appSelectorTransitionAnimationEnabled ? const Duration(milliseconds: 200) : Duration.zero,
+                            duration: appearance.transitionAnimationEnabled
+                                ? const Duration(milliseconds: 200)
+                                : Duration.zero,
                             curve: Curves.easeOutBack,
                             transformAlignment: Alignment.center,
-                            transform: _scaleTransform(context, themes, constraints.maxWidth),
+                            transform: Matrix4.diagonal3Values(scale, scale, 1.0),
+                            decoration: BoxDecoration(
+                              borderRadius: borderRadius,
+                              boxShadow: appearance.focusShadows(shouldHighlight),
+                            ),
                             child: Material(
                           borderRadius: borderRadius,
                           clipBehavior: Clip.antiAlias,
-                          elevation: shouldHighlight ? (themes == 'minimal' ? 6 : (themes == 'classic' ? 8 : 16)) : 0,
-                          shadowColor: (shouldHighlight && themes == 'glow') ? accentColor.withOpacity(0.85) : Colors.black,
+                          elevation: appearance.elevationForFocus(shouldHighlight),
+                          shadowColor: (shouldHighlight && appearance.theme == 'glow')
+                              ? appearance.accentColor.withOpacity(0.85)
+                              : Colors.black,
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
@@ -322,157 +302,10 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                                 ),
                               ),
                               if (_moving) ..._arrows(),
-                              IgnorePointer(
-                                // A color, not an Opacity layer: much cheaper to raster with Skia.
-                                child: AnimatedContainer(
-                                  duration: appSelectorTransitionAnimationEnabled ? const Duration(milliseconds: 200) : Duration.zero,
-                                  curve: Curves.easeInOut,
-                                  color: Colors.black.withOpacity(shouldHighlight ? 0 : 0.10),
-                                ),
-                              ),
-                              Selector<SettingsService, (bool, String)>(
-                                selector: (_, settingsService) => (settingsService.appHighlightAnimationEnabled, settingsService.accentColorHex),
-                                builder: (context, settings, _) {
-                                  final (animationEnabled, accentColorHex) = settings;
-                                  final accentColor = Color(int.parse('FF$accentColorHex', radix: 16));
-
-                                  if (shouldHighlight && !hideHighlightOutlineOnHomescreen) {
-                                    if (themes == 'premium') {
-                                      _animation.stop();
-                                      return const SizedBox();
-                                    }
-                                    if (themes == 'classic') {
-                                      _animation.stop();
-                                      return IgnorePointer(
-                                        child: Stack(
-                                          fit: StackFit.expand,
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: borderRadius,
-                                                border: Border.all(
-                                                  color: accentColor,
-                                                  width: 4
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                    if (themes == 'minimal') {
-                                      _animation.stop();
-                                      return IgnorePointer(
-                                        child: Stack(
-                                          fit: StackFit.expand,
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: borderRadius,
-                                                border: Border.all(
-                                                  color: accentColor,
-                                                  width: 2
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                    if (themes == 'glow') {
-                                      _animation.stop();
-                                      return IgnorePointer(
-                                        child: Stack(
-                                          fit: StackFit.expand,
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: borderRadius,
-                                                border: Border.all(
-                                                  color: accentColor,
-                                                  width: 3
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                    if (animationEnabled) {
-                                      _animation.repeat(reverse: true);
-                                      return AnimatedBuilder(
-                                        animation: CurvedAnimation(parent: _animation, curve: Curves.easeInOut),
-                                        builder: (context, child) {
-                                          final opacity = 0.4 + (_animation.value * 0.6);
-
-                                          return IgnorePointer(
-                                            child: Stack(
-                                              fit: StackFit.expand,
-                                              children: [
-                                                // Outer outline (Accent Color)
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: borderRadius,
-                                                    border: Border.all(
-                                                      color: accentColor.withOpacity(opacity),
-                                                      width: 2
-                                                    ),
-                                                  ),
-                                                ),
-                                                // Inner outline (Black)
-                                                Padding(
-                                                  padding: const EdgeInsets.all(2),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: innerBorderRadius,
-                                                      border: Border.all(
-                                                        color: Colors.black.withOpacity(opacity),
-                                                        width: 2
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    } else {
-                                      _animation.stop();
-                                      return IgnorePointer(
-                                        child: Stack(
-                                          fit: StackFit.expand,
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: borderRadius,
-                                                border: Border.all(
-                                                  color: accentColor,
-                                                  width: 2
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(2),
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius: innerBorderRadius,
-                                                  border: Border.all(
-                                                    color: Colors.black,
-                                                    width: 2
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                  }
-
-                                  _animation.stop();
-                                  return const SizedBox();
-                                },
+                              TvFocusOverlay(
+                                appearance: appearance,
+                                isHighlighted: shouldHighlight,
+                                pulseController: _animation,
                               ),
                             ],
                           ),
@@ -606,33 +439,6 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
   bool _shouldHighlight(BuildContext context)
   {
     return FocusManager.instance.highlightMode == FocusHighlightMode.traditional && Focus.of(context).hasFocus;
-  }
-
-  Matrix4 _scaleTransform(BuildContext context, String theme, double maxWidth) {
-    double scale = 1.0;
-    if (!_moving && _shouldHighlight(context)) {
-      if (theme == 'premium') {
-        scale = 1.15;
-      } else if (theme == 'classic') {
-        scale = 1.0;
-      } else if (theme == 'minimal') {
-        scale = 1.05;
-      } else if (theme == 'glow' || theme == 'squircle') {
-        scale = 1.12;
-      } else {
-        scale = 1.1;
-      }
-
-      if (maxWidth > 0) {
-        // Gap between cards is at least 16px.
-        // Limit horizontal expansion to 14px per side to prevent cropping with the next card.
-        double maxScale = 1.0 + (28.0 / maxWidth);
-        if (scale > maxScale) {
-          scale = maxScale;
-        }
-      }
-    }
-    return Matrix4.diagonal3Values(scale, scale, 1.0);
   }
 
   List<Widget> _arrows() {

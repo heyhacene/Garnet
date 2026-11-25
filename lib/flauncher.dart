@@ -21,11 +21,11 @@ import 'package:flauncher/actions.dart';
 import 'package:flauncher/custom_traversal_policy.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/launcher_state.dart';
-import 'package:flauncher/providers/wallpaper_service.dart';
 import 'package:flauncher/widgets/apps_grid.dart';
 import 'package:flauncher/widgets/category_row.dart';
 import 'package:flauncher/widgets/launcher_alternative_view.dart';
 import 'package:flauncher/widgets/focus_aware_app_bar.dart';
+import 'package:flauncher/widgets/tv_wallpaper_backdrop.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flauncher/widgets/continue_watching_row.dart';
@@ -61,9 +61,7 @@ class _FLauncherState extends State<FLauncher> {
             child: CustomPaint(
               isComplex: true,
               painter: const _NoPainter(),
-              child: Consumer<WallpaperService>(
-                builder: (_, wallpaperService, __) => _wallpaper(context, wallpaperService)
-              ),
+              child: const TvWallpaperBackdrop(),
             ),
           ),
           Consumer<LauncherState>(
@@ -85,12 +83,16 @@ class _FLauncherState extends State<FLauncher> {
                       return Selector<WatchNextService, bool>(
                         selector: (_, watchNext) => watchNext.programs.isNotEmpty,
                         builder: (context, hasContinuingPrograms, _) =>
-                            Selector<SettingsService, ({bool show, int order})>(
+                            Selector<SettingsService, ({bool show, int order, double rowGap, double topSpace})>(
                               selector: (_, settings) => (
                                 show: settings.showContinueWatching,
                                 order: settings.continueWatchingOrder,
+                                rowGap: settings.rowVerticalSpacing > 0
+                                    ? settings.rowVerticalSpacing.clamp(8.0, 40.0)
+                                    : 16.0,
+                                topSpace: settings.homeTopSpacing.clamp(0.0, 200.0),
                               ),
-                              builder: (context, cwSettings, _) =>
+                              builder: (context, layoutSettings, _) =>
                                   // Lazy: only sections near the viewport are
                                   // built. cacheExtent keeps the next row laid
                                   // out so D-pad up/down can find it.
@@ -98,15 +100,16 @@ class _FLauncherState extends State<FLauncher> {
                                     physics: const ClampingScrollPhysics(),
                                     // Inset inside the list, not around it: the list clips at its
                                     // edge and would cut the focused tile's shadow.
-                                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                                    padding: EdgeInsets.fromLTRB(16, 8 + layoutSettings.topSpace, 16, 16),
                                     cacheExtent: 400,
                                     children: _sections(
                                         appsService.launcherSections,
                                         continueWatchingActive:
-                                            cwSettings.show &&
+                                            layoutSettings.show &&
                                             hasContinuingPrograms,
                                         continueWatchingOrder:
-                                            cwSettings.order),
+                                            layoutSettings.order,
+                                        rowVerticalPadding: layoutSettings.rowGap / 2.0),
                                   ),
                             ),
                     );
@@ -128,6 +131,7 @@ class _FLauncherState extends State<FLauncher> {
     List<LauncherSection> sections, {
     bool continueWatchingActive = false,
     int continueWatchingOrder = 0,
+    double rowVerticalPadding = 8.0,
   }) {
     List<Widget> children = [];
     bool firstCategoryFound = false;
@@ -177,7 +181,7 @@ class _FLauncherState extends State<FLauncher> {
       }
 
       children.add(Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: EdgeInsets.symmetric(vertical: rowVerticalPadding),
           child: categoryWidget
       ));
       sectionIdx++;
@@ -191,43 +195,6 @@ class _FLauncherState extends State<FLauncher> {
     }
 
     return children;
-  }
-
-  Widget _wallpaper(BuildContext context, WallpaperService wallpaperService) {
-    Widget background;
-    if (wallpaperService.wallpaper != null) {
-      final physicalSize = MediaQuery.sizeOf(context);
-      background = Image(
-        image: wallpaperService.wallpaper!,
-        key: Key("background_${wallpaperService.version}"),
-        fit: BoxFit.cover,
-        height: physicalSize.height,
-        width: physicalSize.width
-      );
-    }
-    else {
-      background = Container(key: const Key("background"), decoration: BoxDecoration(gradient: wallpaperService.gradient.gradient));
-    }
-
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        background,
-        DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.black.withOpacity(0.35),
-                Colors.black.withOpacity(0.15),
-                Colors.black.withOpacity(0.45),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
   }
 
   Widget _emptyState(BuildContext context) {

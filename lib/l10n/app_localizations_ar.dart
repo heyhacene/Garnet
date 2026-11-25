@@ -486,4 +486,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get gotIt => 'حسنًا';
+
+  @override
+  String get cardsAndFocus => 'البطاقات والتركيز';
+
+  @override
+  String get dpadAdjustHint => 'يسار / يمين: ضبط مباشر • رجوع: إغلاق';
+
+  @override
+  String get focusScale => 'تكبير عند التركيز';
+
+  @override
+  String get cardCornerRadius => 'استدارة الزوايا';
+
+  @override
+  String get focusBorderWidth => 'سُمك إطار التركيز';
+
+  @override
+  String get focusGlowIntensity => 'شدة توهج التركيز';
+
+  @override
+  String get rowVerticalSpacing => 'تباعد الصفوف';
+
+  @override
+  String get cardHorizontalSpacing => 'تباعد البطاقات';
+
+  @override
+  String get homeTopSpacing => 'المساحة العلوية للخلفية';
+
+  @override
+  String get wallpaperDimming => 'تعتيم الخلفية';
+
+  @override
+  String get wallpaperBlur => 'ضبابية الخلفية';
+
+  @override
+  String get resetAppearanceDefaults => 'استعادة إعدادات السينما';
+
+  @override
+  String get batteryIcon => 'أيقونة البطارية';
+
+  @override
+  String get batteryPercentage => 'نسبة البطارية';
 }

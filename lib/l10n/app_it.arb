@@ -190,5 +190,19 @@
     "autoAddNewApps": "Aggiungi le nuove app installate al launcher",
     "whatsNew": "Novità",
     "supportUs": "Sostienici",
-    "gotIt": "Ho capito"
+    "gotIt": "Ho capito",
+    "cardsAndFocus": "Schede e focus",
+    "dpadAdjustHint": "Sinistra / Destra: Regola dal vivo • Indietro: Chiudi",
+    "focusScale": "Scala del focus",
+    "cardCornerRadius": "Raggio degli angoli",
+    "focusBorderWidth": "Spessore bordo focus",
+    "focusGlowIntensity": "Intensità bagliore",
+    "rowVerticalSpacing": "Spaziatura righe",
+    "cardHorizontalSpacing": "Spaziatura schede",
+    "homeTopSpacing": "Spazio superiore sfondo",
+    "wallpaperDimming": "Oscuramento sfondo",
+    "wallpaperBlur": "Sfocatura sfondo",
+    "resetAppearanceDefaults": "Ripristina stile Cinema",
+    "batteryIcon": "Icona batteria",
+    "batteryPercentage": "Percentuale batteria"
 }

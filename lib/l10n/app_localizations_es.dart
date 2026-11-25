@@ -486,4 +486,46 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get gotIt => 'Entendido';
+
+  @override
+  String get cardsAndFocus => 'Tarjetas y enfoque';
+
+  @override
+  String get dpadAdjustHint => 'Izquierda / Derecha: Ajustar en vivo • Atrás: Cerrar';
+
+  @override
+  String get focusScale => 'Escala de enfoque';
+
+  @override
+  String get cardCornerRadius => 'Radio de esquinas';
+
+  @override
+  String get focusBorderWidth => 'Grosor del borde';
+
+  @override
+  String get focusGlowIntensity => 'Intensidad del brillo';
+
+  @override
+  String get rowVerticalSpacing => 'Espaciado entre filas';
+
+  @override
+  String get cardHorizontalSpacing => 'Espaciado entre tarjetas';
+
+  @override
+  String get homeTopSpacing => 'Espacio superior del fondo';
+
+  @override
+  String get wallpaperDimming => 'Oscurecimiento del fondo';
+
+  @override
+  String get wallpaperBlur => 'Desenfoque del fondo';
+
+  @override
+  String get resetAppearanceDefaults => 'Restablecer estilo Cine';
+
+  @override
+  String get batteryIcon => 'Icono de batería';
+
+  @override
+  String get batteryPercentage => 'Porcentaje de batería';
 }

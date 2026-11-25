@@ -190,5 +190,19 @@
     "autoAddNewApps": "नए इंस्टॉल किए गए ऐप्स को लॉन्चर में जोड़ें",
     "whatsNew": "नया क्या है",
     "supportUs": "हमें सपोर्ट करें",
-    "gotIt": "समझ गया"
+    "gotIt": "समझ गया",
+    "cardsAndFocus": "कार्ड और फ़ोकस",
+    "dpadAdjustHint": "बाएँ / दाएँ: लाइव बदलें • वापस: बंद करें",
+    "focusScale": "फ़ोकस स्केल",
+    "cardCornerRadius": "कोने की गोलाई",
+    "focusBorderWidth": "फ़ोकस बॉर्डर चौड़ाई",
+    "focusGlowIntensity": "फ़ोकस चमक तीव्रता",
+    "rowVerticalSpacing": "पंक्ति अंतराल",
+    "cardHorizontalSpacing": "कार्ड अंतराल",
+    "homeTopSpacing": "शीर्ष वॉलपेपर स्थान",
+    "wallpaperDimming": "वॉलपेपर गहरापन",
+    "wallpaperBlur": "वॉलपेपर धुंधलापन",
+    "resetAppearanceDefaults": "सिनेमा डिफ़ॉल्ट रीसेट करें",
+    "batteryIcon": "बैटरी आइकन",
+    "batteryPercentage": "बैटरी प्रतिशत"
 }

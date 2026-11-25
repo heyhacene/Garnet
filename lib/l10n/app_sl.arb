@@ -155,5 +155,19 @@
     "autoAddNewApps": "Dodaj na novo nameščene aplikacije v zaganjalnik",
     "whatsNew": "Novosti",
     "supportUs": "Podprite nas",
-    "gotIt": "Razumem"
+    "gotIt": "Razumem",
+    "cardsAndFocus": "Kartice in fokus",
+    "dpadAdjustHint": "Levo / Desno: Prilagodi v živo • Nazaj: Zapri",
+    "focusScale": "Povečava ob fokusu",
+    "cardCornerRadius": "Zaobljenost robov",
+    "focusBorderWidth": "Debelina obrobe fokusa",
+    "focusGlowIntensity": "Moč sijaja fokusa",
+    "rowVerticalSpacing": "Razmik med vrsticami",
+    "cardHorizontalSpacing": "Razmik med karticami",
+    "homeTopSpacing": "Zgornji prostor ozadja",
+    "wallpaperDimming": "Zatemnitev ozadja",
+    "wallpaperBlur": "Zameglitev ozadja",
+    "resetAppearanceDefaults": "Ponastavi na privzeti kino",
+    "batteryIcon": "Ikona baterije",
+    "batteryPercentage": "Odstotek baterije"
 }

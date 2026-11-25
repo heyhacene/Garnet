@@ -486,4 +486,46 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gotIt => 'Понятно';
+
+  @override
+  String get cardsAndFocus => 'Карточки и фокус';
+
+  @override
+  String get dpadAdjustHint => 'Влево / Вправо: Настройка • Назад: Закрыть';
+
+  @override
+  String get focusScale => 'Масштаб при фокусе';
+
+  @override
+  String get cardCornerRadius => 'Скругление углов';
+
+  @override
+  String get focusBorderWidth => 'Толщина рамки фокуса';
+
+  @override
+  String get focusGlowIntensity => 'Яркость свечения';
+
+  @override
+  String get rowVerticalSpacing => 'Отступ между рядами';
+
+  @override
+  String get cardHorizontalSpacing => 'Отступ между карточками';
+
+  @override
+  String get homeTopSpacing => 'Верхний отступ фона';
+
+  @override
+  String get wallpaperDimming => 'Затемнение фона';
+
+  @override
+  String get wallpaperBlur => 'Размытие фона';
+
+  @override
+  String get resetAppearanceDefaults => 'Сбросить стиль Кино';
+
+  @override
+  String get batteryIcon => 'Значок батареи';
+
+  @override
+  String get batteryPercentage => 'Процент батареи';
 }

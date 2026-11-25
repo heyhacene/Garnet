@@ -190,5 +190,19 @@
     "autoAddNewApps": "将新安装的应用添加到启动器",
     "whatsNew": "新功能",
     "supportUs": "支持我们",
-    "gotIt": "知道了"
+    "gotIt": "知道了",
+    "cardsAndFocus": "卡片与焦点",
+    "dpadAdjustHint": "左 / 右：实时调整 • 返回：关闭",
+    "focusScale": "焦点缩放比例",
+    "cardCornerRadius": "卡片圆角半径",
+    "focusBorderWidth": "焦点边框宽度",
+    "focusGlowIntensity": "焦点光晕强度",
+    "rowVerticalSpacing": "行间距",
+    "cardHorizontalSpacing": "卡片间距",
+    "homeTopSpacing": "顶部壁纸留白",
+    "wallpaperDimming": "壁纸暗化程度",
+    "wallpaperBlur": "壁纸模糊程度",
+    "resetAppearanceDefaults": "重置影院默认样式",
+    "batteryIcon": "电池图标",
+    "batteryPercentage": "电池百分比"
 }

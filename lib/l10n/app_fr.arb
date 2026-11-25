@@ -190,5 +190,19 @@
     "autoAddNewApps": "Ajouter les nouvelles applications au lanceur",
     "whatsNew": "Nouveautés",
     "supportUs": "Nous soutenir",
-    "gotIt": "Compris"
+    "gotIt": "Compris",
+    "cardsAndFocus": "Cartes et focus",
+    "dpadAdjustHint": "Gauche / Droite : Ajuster en direct • Retour : Fermer",
+    "focusScale": "Échelle au focus",
+    "cardCornerRadius": "Rayon des coins",
+    "focusBorderWidth": "Épaisseur bordure focus",
+    "focusGlowIntensity": "Intensité de la lueur",
+    "rowVerticalSpacing": "Espacement des lignes",
+    "cardHorizontalSpacing": "Espacement des cartes",
+    "homeTopSpacing": "Espace haut fond d'écran",
+    "wallpaperDimming": "Assombrissement du fond",
+    "wallpaperBlur": "Flou du fond d'écran",
+    "resetAppearanceDefaults": "Réinitialiser le style Cinéma",
+    "batteryIcon": "Icône de batterie",
+    "batteryPercentage": "Pourcentage de batterie"
 }

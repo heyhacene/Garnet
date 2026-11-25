@@ -22,6 +22,7 @@ import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.*;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -85,6 +86,7 @@ public class MainActivity extends FlutterActivity {
     private final String NOTIFICATIONS_EVENT_CHANNEL = "me.efesser.flauncher/event_notifications";
     private final String WEATHER_EVENT_CHANNEL = "me.efesser.flauncher/event_weather";
     private final String WATCH_NEXT_EVENT_CHANNEL = "me.efesser.flauncher/event_watch_next";
+    private final String BATTERY_EVENT_CHANNEL = "me.efesser.flauncher/event_battery";
     private MethodChannel.Result pendingPermissionResult;
     private static final ExecutorService sIoExecutor = Executors.newFixedThreadPool(4);
     private static final Handler sMainHandler = new Handler(Looper.getMainLooper());
@@ -227,6 +229,10 @@ public class MainActivity extends FlutterActivity {
                 case "isBreezyWeatherInstalled" -> result.success(isBreezyWeatherInstalled());
                 case "openBreezyWeather" -> result.success(openBreezyWeather());
                 case "getPackageName" -> result.success(getPackageName());
+                case "getBatteryInfo" -> {
+                    Intent sticky = getApplicationContext().registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+                    result.success(BatteryEventStreamHandler.extractBatteryInfo(sticky));
+                }
                 default -> result.notImplemented();
             }
         });
@@ -236,6 +242,9 @@ public class MainActivity extends FlutterActivity {
 
         new EventChannel(messenger, NETWORK_EVENT_CHANNEL).setStreamHandler(
                 new NetworkEventStreamHandler(this));
+
+        new EventChannel(messenger, BATTERY_EVENT_CHANNEL).setStreamHandler(
+                new BatteryEventStreamHandler(this));
 
         new EventChannel(messenger, NOTIFICATIONS_EVENT_CHANNEL).setStreamHandler(
                 new EventChannel.StreamHandler() {

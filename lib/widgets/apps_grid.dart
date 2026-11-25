@@ -49,12 +49,18 @@ class AppsGrid extends StatelessWidget
       categoryContent = categoryContainerEmptyState(context);
     }
     else {
+      final (double rowGap, double cardGap) = context.select<SettingsService, (double, double)>(
+        (s) => (
+          s.rowVerticalSpacing > 0 ? s.rowVerticalSpacing.clamp(8.0, 40.0) : 16.0,
+          s.cardHorizontalSpacing > 0 ? s.cardHorizontalSpacing.clamp(8.0, 32.0) : 16.0,
+        ),
+      );
       categoryContent = GridView.custom(
         clipBehavior: Clip.none,
         physics: const NeverScrollableScrollPhysics(),
         primary: false,
         shrinkWrap: true,
-        gridDelegate: _buildSliverGridDelegate(),
+        gridDelegate: _buildSliverGridDelegate(mainAxisSpacing: rowGap, crossAxisSpacing: cardGap),
         padding: EdgeInsets.all(16),
         childrenDelegate: SliverChildBuilderDelegate(
           childCount: applications.length,
@@ -178,11 +184,14 @@ class AppsGrid extends StatelessWidget
     appsService.cancelReorderApplication(category);
   }
 
-  SliverGridDelegate _buildSliverGridDelegate() => SliverGridDelegateWithFixedCrossAxisCount(
+  SliverGridDelegate _buildSliverGridDelegate({
+    double mainAxisSpacing = 16.0,
+    double crossAxisSpacing = 16.0,
+  }) => SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: category.columnsCount,
         childAspectRatio: 16 / 9,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
+        mainAxisSpacing: mainAxisSpacing,
+        crossAxisSpacing: crossAxisSpacing,
       );
 
 }

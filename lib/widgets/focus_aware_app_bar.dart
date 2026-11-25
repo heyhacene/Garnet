@@ -8,6 +8,7 @@ import 'package:flauncher/providers/weather_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'battery_status_widget.dart';
 import 'daily_data_usage_widget.dart';
 import 'date_time_widget.dart';
 import 'network_widget.dart';
@@ -225,6 +226,25 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
                           }
                           return const SizedBox.shrink();
                         },
+                      );
+                    },
+                  ),
+                  Selector<SettingsService, (bool, bool)>(
+                    selector: (_, settings) => (
+                      settings.showBatteryIconInStatusBar,
+                      settings.showBatteryPercentageInStatusBar,
+                    ),
+                    builder: (context, batterySettings, _) {
+                      final (showIcon, showPct) = batterySettings;
+                      if (!showIcon && !showPct) {
+                        return const SizedBox.shrink();
+                      }
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: BatteryStatusWidget(
+                          showIcon: showIcon,
+                          showPercentage: showPct,
+                        ),
                       );
                     },
                   ),

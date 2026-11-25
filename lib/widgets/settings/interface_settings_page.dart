@@ -22,6 +22,7 @@ import 'focusable_settings_tile.dart';
 import 'launcher_sections_panel_page.dart';
 import 'continue_watching_settings_page.dart';
 import 'themes_page.dart';
+import 'appearance_tuning_page.dart';
 import 'accent_color_page.dart';
 import 'wallpaper_panel_page.dart';
 import 'status_bar_panel_page.dart';
@@ -59,6 +60,11 @@ class InterfaceSettingsPage extends StatelessWidget {
                   leading: const Icon(Icons.crop_square),
                   title: Text(localizations.themes, style: Theme.of(context).textTheme.bodyMedium),
                   onPressed: () => Navigator.of(context).pushNamed(ThemesPage.routeName),
+                ),
+                FocusableSettingsTile(
+                  leading: const Icon(Icons.tune),
+                  title: Text(localizations.cardsAndFocus, style: Theme.of(context).textTheme.bodyMedium),
+                  onPressed: () => Navigator.of(context).pushNamed(AppearanceTuningPage.routeName),
                 ),
                 FocusableSettingsTile(
                   leading: const Icon(Icons.palette_outlined),

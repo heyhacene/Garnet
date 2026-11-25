@@ -190,5 +190,19 @@
     "autoAddNewApps": "Neu installierte Apps zum Launcher hinzufügen",
     "whatsNew": "Neuigkeiten",
     "supportUs": "Uns unterstützen",
-    "gotIt": "Verstanden"
+    "gotIt": "Verstanden",
+    "cardsAndFocus": "Karten & Fokus",
+    "dpadAdjustHint": "Links / Rechts: Live anpassen • Zurück: Schließen",
+    "focusScale": "Fokus-Skalierung",
+    "cardCornerRadius": "Eckenradius",
+    "focusBorderWidth": "Fokus-Rahmenbreite",
+    "focusGlowIntensity": "Fokus-Leuchtstärke",
+    "rowVerticalSpacing": "Zeilenabstand",
+    "cardHorizontalSpacing": "Kartenabstand",
+    "homeTopSpacing": "Oberer Hintergrund-Abstand",
+    "wallpaperDimming": "Hintergrund-Abdunklung",
+    "wallpaperBlur": "Hintergrund-Unschärfe",
+    "resetAppearanceDefaults": "Kino-Standard wiederherstellen",
+    "batteryIcon": "Akkusymbol",
+    "batteryPercentage": "Akkuprozent"
 }

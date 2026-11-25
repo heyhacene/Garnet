@@ -74,6 +74,18 @@ class StatusBarPanelPage extends StatelessWidget {
                   secondary: Icon(Icons.signal_wifi_4_bar)
                 ),
                 RoundedSwitchListTile(
+                  value: settingsService.showBatteryIconInStatusBar,
+                  onChanged: (value) => settingsService.setShowBatteryIconInStatusBar(value),
+                  title: Text(localizations.batteryIcon),
+                  secondary: const Icon(Icons.battery_std),
+                ),
+                RoundedSwitchListTile(
+                  value: settingsService.showBatteryPercentageInStatusBar,
+                  onChanged: (value) => settingsService.setShowBatteryPercentageInStatusBar(value),
+                  title: Text(localizations.batteryPercentage),
+                  secondary: const Icon(Icons.percent),
+                ),
+                RoundedSwitchListTile(
                   value: settingsService.showInputsWidgetInStatusBar,
                   onChanged: (value) => settingsService.setShowInputsWidgetInStatusBar(value),
                   title: Text(localizations.inputs),

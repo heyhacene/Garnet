@@ -32,6 +32,7 @@ class FLauncherChannel {
   static const _notificationsEventChannel = EventChannel('me.efesser.flauncher/event_notifications');
   static const _weatherEventChannel = EventChannel('me.efesser.flauncher/event_weather');
   static const _watchNextEventChannel = EventChannel('me.efesser.flauncher/event_watch_next');
+  static const _batteryEventChannel = EventChannel('me.efesser.flauncher/event_battery');
 
   Future<List<Map<dynamic, dynamic>>> getApplications() async {
     try {
@@ -337,4 +338,22 @@ class FLauncherChannel {
 
   StreamSubscription<dynamic> addWatchNextChangedListener(void Function(dynamic) onEvent) =>
       _watchNextEventChannel.receiveBroadcastStream().listen(onEvent);
+
+  Future<Map<String, dynamic>> getBatteryInfo() async {
+    try {
+      final Map<dynamic, dynamic>? map = await _methodChannel.invokeMethod('getBatteryInfo');
+      return map?.cast<String, dynamic>() ?? const {};
+    } catch (e) {
+      _logError('getBatteryInfo', e);
+      return const {};
+    }
+  }
+
+  StreamSubscription<Map<String, dynamic>> addBatteryChangedListener(
+      void Function(Map<String, dynamic>) listener) =>
+      _batteryEventChannel.receiveBroadcastStream().listen((event) {
+        if (event is Map) {
+          listener(event.cast<String, dynamic>());
+        }
+      }, onError: (Object error) => _logError('batteryEventChannel', error));
 }

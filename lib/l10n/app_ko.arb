@@ -190,5 +190,19 @@
     "autoAddNewApps": "새로 설치된 앱을 런처에 추가",
     "whatsNew": "새로운 기능",
     "supportUs": "후원하기",
-    "gotIt": "확인"
+    "gotIt": "확인",
+    "cardsAndFocus": "카드 및 포커스",
+    "dpadAdjustHint": "왼쪽 / 오른쪽: 실시간 조절 • 뒤로: 닫기",
+    "focusScale": "포커스 확대 비율",
+    "cardCornerRadius": "모서리 둥글기",
+    "focusBorderWidth": "포커스 테두리 두께",
+    "focusGlowIntensity": "포커스 발광 강도",
+    "rowVerticalSpacing": "행 간격",
+    "cardHorizontalSpacing": "카드 간격",
+    "homeTopSpacing": "배경 상단 여백",
+    "wallpaperDimming": "배경 어둡기",
+    "wallpaperBlur": "배경 흐림",
+    "resetAppearanceDefaults": "시네마 기본값 복원",
+    "batteryIcon": "배터리 아이콘",
+    "batteryPercentage": "배터리 잔량 (%)"
 }

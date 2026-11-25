@@ -486,4 +486,46 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get gotIt => '확인';
+
+  @override
+  String get cardsAndFocus => '카드 및 포커스';
+
+  @override
+  String get dpadAdjustHint => '왼쪽 / 오른쪽: 실시간 조절 • 뒤로: 닫기';
+
+  @override
+  String get focusScale => '포커스 확대 비율';
+
+  @override
+  String get cardCornerRadius => '모서리 둥글기';
+
+  @override
+  String get focusBorderWidth => '포커스 테두리 두께';
+
+  @override
+  String get focusGlowIntensity => '포커스 발광 강도';
+
+  @override
+  String get rowVerticalSpacing => '행 간격';
+
+  @override
+  String get cardHorizontalSpacing => '카드 간격';
+
+  @override
+  String get homeTopSpacing => '배경 상단 여백';
+
+  @override
+  String get wallpaperDimming => '배경 어둡기';
+
+  @override
+  String get wallpaperBlur => '배경 흐림';
+
+  @override
+  String get resetAppearanceDefaults => '시네마 기본값 복원';
+
+  @override
+  String get batteryIcon => '배터리 아이콘';
+
+  @override
+  String get batteryPercentage => '배터리 잔량 (%)';
 }

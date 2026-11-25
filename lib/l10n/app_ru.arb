@@ -190,5 +190,19 @@
     "autoAddNewApps": "Добавлять новые установленные приложения в лаунчер",
     "whatsNew": "Что нового",
     "supportUs": "Поддержать нас",
-    "gotIt": "Понятно"
+    "gotIt": "Понятно",
+    "cardsAndFocus": "Карточки и фокус",
+    "dpadAdjustHint": "Влево / Вправо: Настройка • Назад: Закрыть",
+    "focusScale": "Масштаб при фокусе",
+    "cardCornerRadius": "Скругление углов",
+    "focusBorderWidth": "Толщина рамки фокуса",
+    "focusGlowIntensity": "Яркость свечения",
+    "rowVerticalSpacing": "Отступ между рядами",
+    "cardHorizontalSpacing": "Отступ между карточками",
+    "homeTopSpacing": "Верхний отступ фона",
+    "wallpaperDimming": "Затемнение фона",
+    "wallpaperBlur": "Размытие фона",
+    "resetAppearanceDefaults": "Сбросить стиль Кино",
+    "batteryIcon": "Значок батареи",
+    "batteryPercentage": "Процент батареи"
 }

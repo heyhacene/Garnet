@@ -190,5 +190,19 @@
     "autoAddNewApps": "Add newly installed apps to launcher",
     "whatsNew": "What's new",
     "supportUs": "Support us",
-    "gotIt": "Got it"
+    "gotIt": "Got it",
+    "cardsAndFocus": "Cards & Focus",
+    "dpadAdjustHint": "Left / Right: Adjust live • Back: Close",
+    "focusScale": "Focus scale",
+    "cardCornerRadius": "Corner radius",
+    "focusBorderWidth": "Focus border width",
+    "focusGlowIntensity": "Focus glow intensity",
+    "rowVerticalSpacing": "Row spacing",
+    "cardHorizontalSpacing": "Card spacing",
+    "homeTopSpacing": "Top wallpaper space",
+    "wallpaperDimming": "Wallpaper dimming",
+    "wallpaperBlur": "Wallpaper blur",
+    "resetAppearanceDefaults": "Reset Cinema defaults",
+    "batteryIcon": "Battery icon",
+    "batteryPercentage": "Battery percentage"
 }

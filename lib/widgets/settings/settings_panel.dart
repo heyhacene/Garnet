@@ -46,6 +46,7 @@ import 'package:flauncher/widgets/settings/continue_watching_card_size_page.dart
 import 'package:flauncher/widgets/settings/continue_watching_max_items_page.dart';
 import 'package:flauncher/widgets/settings/continue_watching_hide_threshold_page.dart';
 import 'package:flauncher/widgets/settings/continue_watching_apps_page.dart';
+import 'package:flauncher/widgets/settings/appearance_tuning_page.dart';
 import 'package:flauncher/models/app.dart';
 import 'package:flutter/material.dart';
 
@@ -91,7 +92,7 @@ class _SettingsPanelState extends State<SettingsPanel> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.black.withOpacity(0.70), // Dim the background
+        backgroundColor: Colors.black.withOpacity(0.42), // Keep Home TV visible for live preview
         body: Stack(
           children: [
             // Tap outside to close
@@ -149,6 +150,8 @@ class _SettingsPanelState extends State<SettingsPanel> {
                       return _FastPageRoute(builder: (_) => const ScreensaverAnimationPage());
                     case ThemesPage.routeName:
                       return _FastPageRoute(builder: (_) => const ThemesPage());
+                    case AppearanceTuningPage.routeName:
+                      return _FastPageRoute(builder: (_) => const AppearanceTuningPage());
                     case AccentColorPage.routeName:
                       return _FastPageRoute(builder: (_) => AccentColorPage());
                     case AccessibilityPage.routeName:

@@ -486,4 +486,46 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get gotIt => 'Зрозуміло';
+
+  @override
+  String get cardsAndFocus => 'Картки та фокус';
+
+  @override
+  String get dpadAdjustHint => 'Вліво / Вправо: Налаштування • Назад: Закрити';
+
+  @override
+  String get focusScale => 'Масштаб при фокусі';
+
+  @override
+  String get cardCornerRadius => 'Заокруглення кутів';
+
+  @override
+  String get focusBorderWidth => 'Товщина рамки фокуса';
+
+  @override
+  String get focusGlowIntensity => 'Яскравість світіння';
+
+  @override
+  String get rowVerticalSpacing => 'Відступ між рядками';
+
+  @override
+  String get cardHorizontalSpacing => 'Відступ між картками';
+
+  @override
+  String get homeTopSpacing => 'Верхній відступ фону';
+
+  @override
+  String get wallpaperDimming => 'Затемнення фону';
+
+  @override
+  String get wallpaperBlur => 'Розмиття фону';
+
+  @override
+  String get resetAppearanceDefaults => 'Скинути стиль Кіно';
+
+  @override
+  String get batteryIcon => 'Значок батареї';
+
+  @override
+  String get batteryPercentage => 'Відсоток батареї';
 }

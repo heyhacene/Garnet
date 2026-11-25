@@ -486,4 +486,46 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get gotIt => 'הבנתי';
+
+  @override
+  String get cardsAndFocus => 'כרטיסים ומיקוד';
+
+  @override
+  String get dpadAdjustHint => 'שמאל / ימין: התאמה בזמן אמת • חזרה: סגירה';
+
+  @override
+  String get focusScale => 'הגדלה במיקוד';
+
+  @override
+  String get cardCornerRadius => 'רדיוס פינות';
+
+  @override
+  String get focusBorderWidth => 'עובי מסגרת מיקוד';
+
+  @override
+  String get focusGlowIntensity => 'עוצמת זוהר מיקוד';
+
+  @override
+  String get rowVerticalSpacing => 'מרווח בין שורות';
+
+  @override
+  String get cardHorizontalSpacing => 'מרווח בין כרטיסים';
+
+  @override
+  String get homeTopSpacing => 'מרווח עליון לרקע';
+
+  @override
+  String get wallpaperDimming => 'הכהיית רקע';
+
+  @override
+  String get wallpaperBlur => 'טשטוש רקע';
+
+  @override
+  String get resetAppearanceDefaults => 'איפוס לסגנון קולנוע';
+
+  @override
+  String get batteryIcon => 'סמל סוללה';
+
+  @override
+  String get batteryPercentage => 'אחוזי סוללה';
 }

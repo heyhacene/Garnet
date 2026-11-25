@@ -190,5 +190,19 @@
     "autoAddNewApps": "Yeni yüklenen uygulamaları başlatıcıya ekle",
     "whatsNew": "Yenilikler",
     "supportUs": "Bizi destekleyin",
-    "gotIt": "Anladım"
+    "gotIt": "Anladım",
+    "cardsAndFocus": "Kartlar ve Odak",
+    "dpadAdjustHint": "Sol / Sağ: Canlı ayarla • Geri: Kapat",
+    "focusScale": "Odak ölçeği",
+    "cardCornerRadius": "Köşe yarıçapı",
+    "focusBorderWidth": "Odak kenarlık kalınlığı",
+    "focusGlowIntensity": "Odak parıltı yoğunluğu",
+    "rowVerticalSpacing": "Satır aralığı",
+    "cardHorizontalSpacing": "Kart aralığı",
+    "homeTopSpacing": "Üst duvar kağıdı boşluğu",
+    "wallpaperDimming": "Duvar kağıdı karartma",
+    "wallpaperBlur": "Duvar kağıdı bulanıklığı",
+    "resetAppearanceDefaults": "Sinema varsayılanlarını sıfırla",
+    "batteryIcon": "Pil simgesi",
+    "batteryPercentage": "Pil yüzdesi"
 }

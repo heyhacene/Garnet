@@ -486,4 +486,46 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get gotIt => '知道了';
+
+  @override
+  String get cardsAndFocus => '卡片与焦点';
+
+  @override
+  String get dpadAdjustHint => '左 / 右：实时调整 • 返回：关闭';
+
+  @override
+  String get focusScale => '焦点缩放比例';
+
+  @override
+  String get cardCornerRadius => '卡片圆角半径';
+
+  @override
+  String get focusBorderWidth => '焦点边框宽度';
+
+  @override
+  String get focusGlowIntensity => '焦点光晕强度';
+
+  @override
+  String get rowVerticalSpacing => '行间距';
+
+  @override
+  String get cardHorizontalSpacing => '卡片间距';
+
+  @override
+  String get homeTopSpacing => '顶部壁纸留白';
+
+  @override
+  String get wallpaperDimming => '壁纸暗化程度';
+
+  @override
+  String get wallpaperBlur => '壁纸模糊程度';
+
+  @override
+  String get resetAppearanceDefaults => '重置影院默认样式';
+
+  @override
+  String get batteryIcon => '电池图标';
+
+  @override
+  String get batteryPercentage => '电池百分比';
 }
