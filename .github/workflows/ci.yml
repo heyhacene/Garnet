@@ -3,6 +3,10 @@ name: CI & Build APK (Garnet TV)
 on:
   push:
     branches: [ main, master, develop, 'feat/**' ]
+    paths-ignore:
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'docs/**'
   pull_request:
   workflow_dispatch:
 
