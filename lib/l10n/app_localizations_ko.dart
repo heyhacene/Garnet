@@ -7,7 +7,7 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'LTvLauncher 정보';
+  String get aboutFlauncher => 'Garnet TV 정보';
 
   @override
   String get addCategory => '카테고리 추가';
@@ -209,16 +209,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get accessibility => '접근성';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher가 기본 런처입니다';
+  String get defaultLauncherIsDefault => 'Garnet TV가 기본 런처입니다';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher가 기본 런처가 아닙니다';
+  String get defaultLauncherNotDefault => 'Garnet TV가 기본 런처가 아닙니다';
 
   @override
   String get setAsDefaultLauncher => '기본 런처로 설정';
 
   @override
-  String get defaultLauncherDescription => '기본 런처로 설정하면 홈 버튼은 항상 LTvLauncher로 돌아갑니다. TV도 직접 LTvLauncher로 부팅됩니다.';
+  String get defaultLauncherDescription => '기본 런처로 설정하면 홈 버튼은 항상 Garnet TV로 돌아갑니다. TV도 직접 Garnet TV로 부팅됩니다.';
 
   @override
   String get inputs => '입력';

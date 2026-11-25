@@ -7,7 +7,7 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'LTvLauncher Hakkında';
+  String get aboutFlauncher => 'Garnet TV Hakkında';
 
   @override
   String get addCategory => 'Kategori ekle';
@@ -209,16 +209,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get accessibility => 'Erişilebilirlik';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher varsayılan başlatıcıdır';
+  String get defaultLauncherIsDefault => 'Garnet TV varsayılan başlatıcıdır';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher varsayılan başlatıcı değildir';
+  String get defaultLauncherNotDefault => 'Garnet TV varsayılan başlatıcı değildir';
 
   @override
   String get setAsDefaultLauncher => 'Varsayılan başlatıcı olarak ayarla';
 
   @override
-  String get defaultLauncherDescription => 'Varsayılan başlatıcı olarak ayarlandığında, Ana Sayfa düğmesi her zaman LTvLauncher\'a döner. TV de doğrudan LTvLauncher\'da başlar.';
+  String get defaultLauncherDescription => 'Varsayılan başlatıcı olarak ayarlandığında, Ana Sayfa düğmesi her zaman Garnet TV\'a döner. TV de doğrudan Garnet TV\'da başlar.';
 
   @override
   String get inputs => 'Girişler';

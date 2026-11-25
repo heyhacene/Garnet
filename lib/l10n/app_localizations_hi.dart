@@ -7,7 +7,7 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'LTvLauncher के बारे में';
+  String get aboutFlauncher => 'Garnet TV के बारे में';
 
   @override
   String get addCategory => 'श्रेणी जोड़ें';
@@ -209,16 +209,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get accessibility => 'पहुंच (एक्सेसिबिलिटी)';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher डिफ़ॉल्ट लॉन्चर है';
+  String get defaultLauncherIsDefault => 'Garnet TV डिफ़ॉल्ट लॉन्चर है';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher डिफ़ॉल्ट लॉन्चर नहीं है';
+  String get defaultLauncherNotDefault => 'Garnet TV डिफ़ॉल्ट लॉन्चर नहीं है';
 
   @override
   String get setAsDefaultLauncher => 'डिफ़ॉल्ट लॉन्चर के रूप में सेट करें';
 
   @override
-  String get defaultLauncherDescription => 'डिफ़ॉल्ट लॉन्चर के रूप में सेट होने पर, होम बटन हमेशा LTvLauncher पर वापस आएगा। टीवी भी सीधे LTvLauncher में बूट होगा।';
+  String get defaultLauncherDescription => 'डिफ़ॉल्ट लॉन्चर के रूप में सेट होने पर, होम बटन हमेशा Garnet TV पर वापस आएगा। टीवी भी सीधे Garnet TV में बूट होगा।';
 
   @override
   String get inputs => 'इनपुट';

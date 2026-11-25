@@ -86,7 +86,7 @@ def main():
                 if val == en_val and len(val.strip()) > 3:
                     if k in ALLOWED_IDENTICAL and val in ALLOWED_IDENTICAL[k]:
                         continue
-                    if val.startswith("LTvLauncher") or "LTvLauncher" in val:
+                    if val.startswith("LTvLauncher") or "LTvLauncher" in val or "Garnet TV" in val:
                         continue
                     warnings.append(f"[{locale}] Possible untranslated key '{k}': \"{val}\" matches English")
 

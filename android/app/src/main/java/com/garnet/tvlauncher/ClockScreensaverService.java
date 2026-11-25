@@ -1,4 +1,4 @@
-package com.leanbitlab.ltvL;
+package com.garnet.tvlauncher;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

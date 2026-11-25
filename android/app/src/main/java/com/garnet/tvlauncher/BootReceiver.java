@@ -1,4 +1,4 @@
-package com.leanbitlab.ltvL;
+package com.garnet.tvlauncher;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

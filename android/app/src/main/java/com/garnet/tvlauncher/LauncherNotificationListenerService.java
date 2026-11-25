@@ -1,4 +1,4 @@
-package com.leanbitlab.ltvL;
+package com.garnet.tvlauncher;
 
 import android.app.Notification;
 import android.content.pm.PackageManager;

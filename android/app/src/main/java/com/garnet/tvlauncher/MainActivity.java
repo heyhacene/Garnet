@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.leanbitlab.ltvL;
+package com.garnet.tvlauncher;
 
 import android.app.NotificationManager;
 import android.content.ComponentName;
@@ -1240,16 +1240,16 @@ public class MainActivity extends FlutterActivity {
         String packageName = getPackageName();
         String flat = Settings.Secure.getString(getContentResolver(), "enabled_notification_listeners");
         if (flat != null && !flat.isEmpty()) {
-            if (flat.contains(packageName) || flat.contains("com.leanbitlab.ltvL")) {
+            if (flat.contains(packageName) || flat.contains("com.garnet.tvlauncher")) {
                 return true;
             }
             String[] names = flat.split(":");
             for (String name : names) {
-                if (name.contains(packageName) || name.contains("com.leanbitlab.ltvL")) {
+                if (name.contains(packageName) || name.contains("com.garnet.tvlauncher")) {
                     return true;
                 }
                 ComponentName cn = ComponentName.unflattenFromString(name);
-                if (cn != null && (cn.getPackageName().equals(packageName) || cn.getPackageName().contains("leanbitlab"))) {
+                if (cn != null && (cn.getPackageName().equals(packageName) || cn.getPackageName().equals("com.garnet.tvlauncher"))) {
                     return true;
                 }
             }

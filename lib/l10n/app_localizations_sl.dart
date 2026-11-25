@@ -7,7 +7,7 @@ class AppLocalizationsSl extends AppLocalizations {
   AppLocalizationsSl([String locale = 'sl']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'O programu LTvLauncher';
+  String get aboutFlauncher => 'O programu Garnet TV';
 
   @override
   String get addCategory => 'Dodaj kategorijo';
@@ -209,16 +209,16 @@ class AppLocalizationsSl extends AppLocalizations {
   String get accessibility => 'Dostopnost';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher je privzeti zaganjalnik';
+  String get defaultLauncherIsDefault => 'Garnet TV je privzeti zaganjalnik';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher ni privzeti zaganjalnik';
+  String get defaultLauncherNotDefault => 'Garnet TV ni privzeti zaganjalnik';
 
   @override
   String get setAsDefaultLauncher => 'Nastavi kot privzeti zaganjalnik';
 
   @override
-  String get defaultLauncherDescription => 'Ko je nastavljen kot privzeti zaganjalnik, se s pritiskom na gumb Domov vedno vrnete v LTvLauncher. TV se bo zagnal neposredno v LTvLauncher.';
+  String get defaultLauncherDescription => 'Ko je nastavljen kot privzeti zaganjalnik, se s pritiskom na gumb Domov vedno vrnete v Garnet TV. TV se bo zagnal neposredno v Garnet TV.';
 
   @override
   String get inputs => 'Vhodi';

@@ -7,7 +7,7 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'О программе LTvLauncher';
+  String get aboutFlauncher => 'О программе Garnet TV';
 
   @override
   String get addCategory => 'Добавить категорию';
@@ -209,16 +209,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get accessibility => 'Специальные возможности';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher является лаунчером по умолчанию';
+  String get defaultLauncherIsDefault => 'Garnet TV является лаунчером по умолчанию';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher не является лаунчером по умолчанию';
+  String get defaultLauncherNotDefault => 'Garnet TV не является лаунчером по умолчанию';
 
   @override
   String get setAsDefaultLauncher => 'Установить как лаунчер по умолчанию';
 
   @override
-  String get defaultLauncherDescription => 'При установке в качестве лаунчера по умолчанию кнопка «Домой» всегда будет возвращать к LTvLauncher. ТВ также будет загружаться напрямую в LTvLauncher.';
+  String get defaultLauncherDescription => 'При установке в качестве лаунчера по умолчанию кнопка «Домой» всегда будет возвращать к Garnet TV. ТВ также будет загружаться напрямую в Garnet TV.';
 
   @override
   String get inputs => 'Входы';

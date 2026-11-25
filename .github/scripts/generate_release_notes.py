@@ -134,17 +134,17 @@ def main():
     if not changelog:
         changelog = get_git_changelog(tag_name)
     
-    size_universal = find_apk_size("LTvLauncher-universal-release.apk", "app-release.apk")
-    size_armv7 = find_apk_size("LTvLauncher-armeabi-v7a-release.apk", "app-armeabi-v7a-release.apk")
-    size_arm64 = find_apk_size("LTvLauncher-arm64-v8a-release.apk", "app-arm64-v8a-release.apk")
+    size_universal = find_apk_size("GarnetTV-universal-release.apk", "app-release.apk")
+    size_armv7 = find_apk_size("GarnetTV-armeabi-v7a-release.apk", "app-armeabi-v7a-release.apk")
+    size_arm64 = find_apk_size("GarnetTV-arm64-v8a-release.apk", "app-arm64-v8a-release.apk")
 
     downloads = f"""### Downloads (Choose Your Architecture)
 
 | File | Target Devices | Architecture | Size |
 |:---|:---|:---|:---|
-| **`LTvLauncher-universal-release.apk`** | All Android TV & Fire TV devices (Universal) | All | {size_universal} |
-| **`LTvLauncher-arm64-v8a-release.apk`** | Chromecast with Google TV, Nvidia Shield, modern TVs | 64-bit ARM (`arm64-v8a`) | {size_arm64} |
-| **`LTvLauncher-armeabi-v7a-release.apk`** | Fire TV Stick (Lite, 4K, 4K Max), older smart TVs | 32-bit ARM (`armeabi-v7a`) | {size_armv7} |
+| **`GarnetTV-universal-release.apk`** | All Android TV & Fire TV devices (Universal) | All | {size_universal} |
+| **`GarnetTV-arm64-v8a-release.apk`** | Chromecast with Google TV, Nvidia Shield, modern TVs | 64-bit ARM (`arm64-v8a`) | {size_arm64} |
+| **`GarnetTV-armeabi-v7a-release.apk`** | Fire TV Stick (Lite, 4K, 4K Max), older smart TVs | 32-bit ARM (`armeabi-v7a`) | {size_armv7} |
 """
 
     # Hand-written notes (Support, Added, Changed, Fixed, Maintenance) win over the fastlane bullets
@@ -153,11 +153,7 @@ def main():
         with open(notes_path, "r") as f:
             release_notes = f.read().rstrip() + "\n\n" + downloads
     else:
-        release_notes = f"""### 💖 Support Our Work
-
-As an open-source, community-funded project, we operate on a very limited budget. If LTvLauncher helps you daily, please consider supporting us on [GitHub Sponsors](https://github.com/sponsors/LeanBitLab) or [Open Collective](https://opencollective.com/leanbitlab-org). Sharing LTvLauncher with friends and family makes a huge difference!
-
-## LTvLauncher {tag_name}
+        release_notes = f"""## Garnet TV {tag_name}
 
 {group_changelog(changelog)}
 

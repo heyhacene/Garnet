@@ -7,7 +7,7 @@ class AppLocalizationsHe extends AppLocalizations {
   AppLocalizationsHe([String locale = 'he']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'אודות LTvLauncher';
+  String get aboutFlauncher => 'אודות Garnet TV';
 
   @override
   String get addCategory => 'הוספת קטגוריה';
@@ -209,16 +209,16 @@ class AppLocalizationsHe extends AppLocalizations {
   String get accessibility => 'נגישות';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher הוא מסך הבית המוגדר כברירת מחדל';
+  String get defaultLauncherIsDefault => 'Garnet TV הוא מסך הבית המוגדר כברירת מחדל';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher אינו מוגדר כמסך הבית כברירת מחדל';
+  String get defaultLauncherNotDefault => 'Garnet TV אינו מוגדר כמסך הבית כברירת מחדל';
 
   @override
   String get setAsDefaultLauncher => 'הגדרה כמסך הבית כברירת מחדל';
 
   @override
-  String get defaultLauncherDescription => 'כאשר מוגדר כמסך הבית כברירת מחדל, כפתור הבית תמיד יחזיר אל LTvLauncher. הטלוויזיה גם תופעל ישירות לתוך LTvLauncher.';
+  String get defaultLauncherDescription => 'כאשר מוגדר כמסך הבית כברירת מחדל, כפתור הבית תמיד יחזיר אל Garnet TV. הטלוויזיה גם תופעל ישירות לתוך Garnet TV.';
 
   @override
   String get inputs => 'כניסות';

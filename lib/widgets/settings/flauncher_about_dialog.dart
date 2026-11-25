@@ -74,7 +74,7 @@ class LTvLauncherAboutDialog extends StatelessWidget {
 
               // Title & Version
               const Text(
-                "LTvLauncher",
+                "Garnet TV",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -91,10 +91,11 @@ class LTvLauncherAboutDialog extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               const Text(
-                "Developed by LeanBitLab",
+                "Open-source fork of LTvLauncher & FLauncher (GPL-3.0)",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white70,
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
               ),

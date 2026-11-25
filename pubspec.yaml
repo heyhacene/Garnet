@@ -1,7 +1,7 @@
 name: flauncher
-description: Flutter-based Android TV launcher.
+description: Garnet TV - Ad-free Flutter-based Android TV launcher (fork of LTvLauncher / FLauncher).
 
-version: 2026.11.23+8117
+version: 0.1.0+1
 
 environment:
   sdk: ">=3.4.3"

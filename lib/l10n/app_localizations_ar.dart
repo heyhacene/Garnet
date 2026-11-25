@@ -7,7 +7,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'حول LTvLauncher';
+  String get aboutFlauncher => 'حول Garnet TV';
 
   @override
   String get addCategory => 'إضافة فئة';
@@ -209,16 +209,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get accessibility => 'إمكانية الوصول';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher هو المشغل الافتراضي';
+  String get defaultLauncherIsDefault => 'Garnet TV هو المشغل الافتراضي';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher ليس المشغل الافتراضي';
+  String get defaultLauncherNotDefault => 'Garnet TV ليس المشغل الافتراضي';
 
   @override
   String get setAsDefaultLauncher => 'تعيين كمشغل افتراضي';
 
   @override
-  String get defaultLauncherDescription => 'عند تعيينه كمشغل افتراضي، سيعود زر الصفحة الرئيسية دائماً إلى LTvLauncher. سيتم أيضاً تشغيل التلفزيون مباشرة في LTvLauncher.';
+  String get defaultLauncherDescription => 'عند تعيينه كمشغل افتراضي، سيعود زر الصفحة الرئيسية دائماً إلى Garnet TV. سيتم أيضاً تشغيل التلفزيون مباشرة في Garnet TV.';
 
   @override
   String get inputs => 'المدخلات';

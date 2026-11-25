@@ -1,24 +1,19 @@
-package com.leanbitlab.ltvL;
+package com.garnet.tvlauncher;
 
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.telephony.TelephonyCallback;
-
-import androidx.annotation.RequiresApi;
+import android.telephony.PhoneStateListener;
 
 import java.util.Map;
 
 import io.flutter.plugin.common.EventChannel;
 
-@RequiresApi(api = Build.VERSION_CODES.S)
-public class TelephonyCallbackImpl extends TelephonyCallback
-        implements TelephonyCallback.DataConnectionStateListener
+public class PhoneStateListenerImpl extends PhoneStateListener
 {
     private final EventChannel.EventSink _eventSink;
     private final Handler _handler = new Handler(Looper.getMainLooper());
 
-    public TelephonyCallbackImpl(EventChannel.EventSink eventSink)
+    public  PhoneStateListenerImpl(EventChannel.EventSink eventSink)
     {
         _eventSink = eventSink;
     }
