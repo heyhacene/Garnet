@@ -106,6 +106,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             if (hasKeystore) {
                 signingConfig signingConfigs.release
+            } else {
+                // Ensure release APKs built without a custom keystore remain signed and sideloadable on Android TV
+                signingConfig signingConfigs.debug
             }
             ndk {
                 abiFilters 'armeabi-v7a', 'arm64-v8a'
