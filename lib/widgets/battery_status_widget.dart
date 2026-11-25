@@ -18,7 +18,7 @@ class BatteryStatusWidget extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    BatteryService? batteryService;
+    final BatteryService batteryService;
     try {
       batteryService = context.watch<BatteryService>();
     } on ProviderNotFoundException {
