@@ -349,7 +349,7 @@ class FLauncherChannel {
     }
   }
 
-  StreamSubscription<Map<String, dynamic>> addBatteryChangedListener(
+  StreamSubscription<dynamic> addBatteryChangedListener(
       void Function(Map<String, dynamic>) listener) =>
       _batteryEventChannel.receiveBroadcastStream().listen((event) {
         if (event is Map) {

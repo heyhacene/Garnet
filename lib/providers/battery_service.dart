@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 
 class BatteryService extends ChangeNotifier {
   final FLauncherChannel _channel;
-  StreamSubscription<Map<String, dynamic>>? _subscription;
+  StreamSubscription<dynamic>? _subscription;
 
   bool _present = false;
   int _level = -1;
