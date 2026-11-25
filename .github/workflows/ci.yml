@@ -48,9 +48,10 @@ jobs:
 
       - name: Static Analysis
         run: |
-          set -o pipefail
-          flutter analyze --no-fatal-infos --no-fatal-warnings 2>&1 | tee analyze.log
-          grep -E "^[[:space:]]*(error) •" analyze.log | head -n 20 | while IFS= read -r line; do echo "::error::$line"; done || true
+          flutter analyze --no-fatal-infos --no-fatal-warnings > analyze_all.log 2>&1 || ALL_RC=$?
+          cat analyze_all.log
+          grep -E " • " analyze_all.log | grep -E "^[[:space:]]*error " | head -n 20 | while IFS= read -r line; do echo "::error::ALL: $line"; done || true
+          if [ "${ALL_RC:-0}" -ne 0 ]; then exit "$ALL_RC"; fi
           flutter analyze --no-fatal-infos \
             lib/models/tv_appearance_config.dart \
             lib/providers/battery_service.dart \
@@ -58,7 +59,10 @@ jobs:
             lib/widgets/tv_focus_frame.dart \
             lib/widgets/tv_wallpaper_backdrop.dart \
             lib/widgets/settings/appearance_tuning_page.dart \
-            lib/widgets/settings/focusable_slider_tile.dart
+            lib/widgets/settings/focusable_slider_tile.dart > analyze_new.log 2>&1 || NEW_RC=$?
+          cat analyze_new.log
+          grep -E " • " analyze_new.log | head -n 20 | while IFS= read -r line; do echo "::error::NEW: $line"; done || true
+          if [ "${NEW_RC:-0}" -ne 0 ]; then exit "$NEW_RC"; fi
 
       - name: Run Tests
         run: flutter test
