@@ -87,6 +87,35 @@ jobs:
           cp release_apks/*.apk build/app/outputs/flutter-apk/
           ls -lh release_apks/
 
+      - name: Sign & Align Release APKs
+        run: |
+          APKSIGNER=$(find $ANDROID_SDK_ROOT/build-tools $ANDROID_HOME/build-tools /usr/local/lib/android/sdk/build-tools -name apksigner 2>/dev/null | sort -V | tail -n 1)
+          ZIPALIGN=$(find $ANDROID_SDK_ROOT/build-tools $ANDROID_HOME/build-tools /usr/local/lib/android/sdk/build-tools -name zipalign 2>/dev/null | sort -V | tail -n 1)
+          KEYSTORE="android/keystore/app.keystore"
+
+          for apk in release_apks/GarnetTV-universal-release.apk release_apks/GarnetTV-armeabi-v7a-release.apk release_apks/GarnetTV-arm64-v8a-release.apk; do
+            echo "Aligning and signing $apk..."
+            WORK_APK="$apk"
+            if [ -n "$ZIPALIGN" ]; then
+              $ZIPALIGN -p -f 4 "$apk" "${apk}.aligned"
+              WORK_APK="${apk}.aligned"
+            fi
+            $APKSIGNER sign \
+              --ks "$KEYSTORE" \
+              --ks-key-alias "keonote" \
+              --ks-pass "pass:keonotepassword" \
+              --key-pass "pass:keonotepassword" \
+              --v1-signing-enabled true \
+              --v2-signing-enabled true \
+              --v3-signing-enabled true \
+              --out "${apk}.signed" \
+              "$WORK_APK"
+            mv "${apk}.signed" "$apk"
+            rm -f "${apk}.aligned"
+            $APKSIGNER verify --verbose "$apk"
+          done
+          ls -lh release_apks/
+
       - name: Generate Release Notes
         env:
           TAG_NAME: ${{ github.event.inputs.tag_name || github.ref_name }}
@@ -102,6 +131,7 @@ jobs:
             release_apks/GarnetTV-armeabi-v7a-release.apk
             release_apks/GarnetTV-arm64-v8a-release.apk
           draft: false
+          make_latest: true
           prerelease: ${{ contains(github.event.inputs.tag_name || github.ref_name, '-') }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

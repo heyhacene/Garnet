@@ -23,7 +23,7 @@
         android:required="false" />
     <uses-feature
         android:name="android.software.leanback"
-        android:required="true" />
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.wifi"
         android:required="false" />
@@ -60,6 +60,7 @@
     <application
         android:allowBackup="false"
         android:banner="@drawable/banner"
+        android:extractNativeLibs="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Garnet TV">
         <activity
